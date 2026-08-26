@@ -25,7 +25,10 @@ Añadir sección:
 
 ## UI atómicos
 
-- `SvgIcon.vue` prop `name, size, decorative` — registro en `src/icons/registry.js`, `currentColor`.
+- `SvgIcon.vue` prop `name, size, decorative` — híbrido:
+  - Registro local `src/icons/registry.js` (`currentColor`, ej. `name="whatsapp"`)
+  - Iconify dinámico `name="mdi:whatsapp" | "lucide:coffee" | "heroicons:shopping-bag"` vía `@iconify/vue` (requiere `unplugin-icons` + `@iconify/json` ya configurados en `vite.config.js`)
+  - Import directo optimizado (tree-shakable, sin fetch): `import IconWhatsapp from '~icons/mdi/whatsapp'` (plugin `unplugin-icons/vite`)
 - `SvgIllustration.vue` prop `name, alt` — ilustraciones para placeholders.
 - `MediaVisual.vue` prop `visual:{type,name|src,aspect,alt}, imageSrc, label` — unifica WebP e SVG.
 - `ProductVisual.vue` wrapper de `MediaVisual` para `productImages.js`.

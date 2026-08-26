@@ -1,10 +1,13 @@
 <script setup>
 /**
  * SvgIcon — icono SVG reutilizable, solo currentColor
- * Usa registro centralizado en src/icons/registry.js
+ * - Si `name` existe en src/icons/registry.js → usa SVG local (óptimo, cero deps)
+ * - Si `name` contiene ":" (ej. "mdi:whatsapp", "lucide:coffee") → usa Iconify vía @iconify/vue
+ *   También puedes importar directo con unplugin-icons: `import IconWhatsapp from '~icons/mdi/whatsapp'`
  */
 import { computed } from "vue";
 import { getIcon } from "@/icons/registry";
+import { Icon as IconifyIcon } from "@iconify/vue";
 
 const props = defineProps({
   name: { type: String, required: true },
@@ -13,15 +16,27 @@ const props = defineProps({
   decorative: { type: Boolean, default: true },
 });
 
-const icon = computed(() => getIcon(props.name));
+const isIconify = computed(() => props.name.includes(":"));
+const icon = computed(() => (isIconify.value ? null : getIcon(props.name)));
 const dimension = computed(() => (typeof props.size === "number" ? `${props.size}px` : props.size));
 const isFill = computed(() => icon.value?.fill === true);
 </script>
 
 <template>
+  <!-- Iconify (unplugin-icons / Iconify collections) -->
+  <IconifyIcon
+    v-if="isIconify"
+    :icon="name"
+    :width="dimension"
+    :height="dimension"
+    :aria-hidden="decorative ? 'true' : undefined"
+    :aria-label="decorative ? undefined : title || name"
+    role="img"
+  />
+  <!-- Registro local -->
   <!-- eslint-disable-next-line vue/no-v-html -->
   <svg
-    v-if="icon"
+    v-else-if="icon"
     :width="dimension"
     :height="dimension"
     :viewBox="icon.viewBox"
