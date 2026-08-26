@@ -15,6 +15,7 @@ const props = defineProps({
 
 const icon = computed(() => getIcon(props.name));
 const dimension = computed(() => (typeof props.size === "number" ? `${props.size}px` : props.size));
+const isFill = computed(() => icon.value?.fill === true);
 </script>
 
 <template>
@@ -24,11 +25,11 @@ const dimension = computed(() => (typeof props.size === "number" ? `${props.size
     :width="dimension"
     :height="dimension"
     :viewBox="icon.viewBox"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="1.8"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    :fill="isFill ? 'currentColor' : 'none'"
+    :stroke="isFill ? 'none' : 'currentColor'"
+    :stroke-width="isFill ? undefined : '1.8'"
+    :stroke-linecap="isFill ? undefined : 'round'"
+    :stroke-linejoin="isFill ? undefined : 'round'"
     :aria-hidden="decorative ? 'true' : undefined"
     :aria-label="decorative ? undefined : title || name"
     role="img"
