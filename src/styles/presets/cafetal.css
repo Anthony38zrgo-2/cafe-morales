@@ -1,0 +1,23 @@
+/**
+ * PRESET CAFETAL — cálido, orgánico, artesanal
+ */
+[data-preset="cafetal"] {
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --radius-card: 1.5rem;
+  --radius-button: 9999px;
+  --radius-visual: 2rem;
+}
+
+[data-preset="cafetal"] .display-title {
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+
+[data-preset="cafetal"] .visual-placeholder {
+  border-style: dashed;
+}
+
+[data-preset="cafetal"] .catalog-card {
+  border-width: 1px;
+}

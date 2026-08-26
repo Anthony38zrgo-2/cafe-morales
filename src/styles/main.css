@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@import "./theme.css";
+@import "./palettes/forest.css";
+@import "./palettes/denim-orange.css";
+@import "./palettes/earth.css";
+@import "./palettes/ocean.css";
+@import "./palettes/sunset.css";
+@import "./palettes/graphite.css";
+@import "./palettes/wine.css";
+@import "./palettes/midnight.css";
+@import "./palettes/sand.css";
+@import "./presets/cafetal.css";
+@import "./presets/minimal.css";
+@import "./presets/vibrante.css";
+@import "./components.css";
+
+@layer base {
+  :root {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-surface);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+}

@@ -1,0 +1,30 @@
+/**
+ * TOKENS BASE — PLANTILLA V2
+ * Define valores por defecto (forest). Las paletas sobreescriben vía [data-palette].
+ * Los presets sobreescriben tipografía, radios y densidades vía [data-preset].
+ */
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+
+  --color-ink: #172033;
+  --color-muted: #5f6878;
+  --color-surface: #faf8f3;
+  --color-surface-alt: #eef1f5;
+  --color-brand: #234f46;
+  --color-brand-dark: #17372f;
+  --color-accent: #d39b46;
+  --color-white: #ffffff;
+
+  /* Aliases para compatibilidad amplia */
+  --color-smoke: var(--color-surface);
+  --color-smoke-deep: var(--color-surface-alt);
+
+  /* Radius semántico — controlado por preset/theme.radius */
+  --radius-card: 1.5rem;
+  --radius-button: 9999px;
+  --radius-visual: 2rem;
+
+  /* Tipografía escalable */
+  --text-display-base: 3rem;
+}

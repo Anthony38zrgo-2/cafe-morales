@@ -1,0 +1,346 @@
+@layer base {
+  * {
+    @apply box-border;
+  }
+  body {
+    @apply bg-surface text-ink antialiased;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply min-h-screen overflow-x-hidden;
+  }
+  .page-container {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+  .section-space {
+    @apply py-18 sm:py-24 lg:py-28;
+  }
+  .section-muted {
+    @apply bg-surface-alt;
+  }
+  .eyebrow {
+    @apply mb-4 text-xs font-bold uppercase tracking-[.22em] text-brand;
+  }
+  .display-title {
+    @apply max-w-3xl font-display text-5xl font-bold leading-[.98] tracking-[-.035em] sm:text-6xl lg:text-7xl;
+  }
+  .section-title {
+    @apply max-w-3xl font-display text-4xl font-bold leading-tight sm:text-5xl;
+  }
+  .lead {
+    @apply mt-6 max-w-2xl text-lg leading-8 text-muted;
+  }
+  .section-intro {
+    @apply mb-10 mt-5 max-w-2xl leading-7 text-muted;
+  }
+  .split-grid {
+    @apply grid items-center gap-12 lg:grid-cols-2 lg:gap-18;
+  }
+  .split-grid-reverse > :first-child {
+    @apply lg:order-last;
+  }
+  .button-row {
+    @apply mt-8 flex flex-wrap gap-3;
+  }
+  .button {
+    @apply inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition hover:-translate-y-0.5;
+    border-radius: var(--radius-button);
+  }
+  .button-primary {
+    @apply bg-brand text-white hover:bg-brand-dark;
+  }
+  .button-secondary {
+    @apply border border-ink/20 bg-white text-ink hover:border-brand;
+  }
+  .button-ghost {
+    @apply bg-transparent text-brand hover:bg-brand/10;
+  }
+  .button-light {
+    @apply mt-8 bg-white text-brand-dark;
+  }
+
+  .site-header {
+    @apply sticky top-0 z-50 border-b border-ink/10 bg-surface/90 backdrop-blur;
+  }
+  .header-inner {
+    @apply flex min-h-18 items-center justify-between gap-6 py-3;
+  }
+  .brand {
+    @apply flex items-center gap-3 font-bold;
+  }
+  .brand-mark {
+    @apply grid size-11 place-items-center rounded-full bg-brand text-sm text-white;
+  }
+  .site-header nav {
+    @apply hidden items-center gap-6 text-sm font-semibold md:flex;
+  }
+  .site-header nav a {
+    @apply transition hover:text-brand;
+  }
+
+  .hero-section {
+    @apply bg-gradient-to-br from-surface via-surface to-surface-alt;
+  }
+  .hero-section.centered {
+    @apply text-center;
+  }
+  .hero-section.centered .page-container {
+    @apply flex flex-col items-center;
+  }
+  .hero-section.centered .lead,
+  .hero-section.centered .display-title {
+    @apply mx-auto;
+  }
+  .hero-section.centered .button-row {
+    @apply justify-center;
+  }
+
+  .visual-placeholder {
+    @apply relative grid w-full place-items-center overflow-hidden border p-8 text-center text-xs font-bold uppercase tracking-[.16em] text-brand;
+    border-radius: var(--radius-visual);
+    border-color: color-mix(in srgb, var(--color-brand) 35%, transparent);
+    background: var(--color-surface-alt);
+  }
+  .visual-placeholder::before {
+    content: "";
+    @apply absolute inset-5 rounded-[1.4rem] border border-brand/10;
+    border-radius: calc(var(--radius-visual) - 0.6rem);
+  }
+  .visual-placeholder::after {
+    content: "";
+    @apply absolute size-40 rounded-full bg-accent/15 blur-2xl;
+  }
+  .visual-placeholder span {
+    @apply relative z-10 max-w-52;
+  }
+
+  .catalog-grid {
+    @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
+  }
+  .catalog-grid.list {
+    @apply grid-cols-1;
+  }
+  .catalog-grid.list .catalog-card {
+    @apply flex flex-col sm:flex-row;
+  }
+  .catalog-grid.list .catalog-card .media-visual,
+  .catalog-grid.list .catalog-card .visual-placeholder {
+    @apply sm:w-64 sm:shrink-0;
+  }
+  .catalog-card {
+    @apply overflow-hidden border border-ink/10 bg-white shadow-sm;
+    border-radius: var(--radius-card);
+  }
+  .catalog-card .media-visual,
+  .catalog-card .visual-placeholder {
+    @apply rounded-none border-0 border-b border-dashed border-brand/25;
+  }
+  .card-body {
+    @apply p-6 flex flex-1 flex-col;
+  }
+  .card-meta {
+    @apply mb-4 flex justify-between gap-3 text-[.7rem] font-bold uppercase tracking-wider text-brand;
+  }
+  .card-body h3 {
+    @apply font-display text-2xl font-bold;
+  }
+  .card-body p {
+    @apply my-4 text-sm leading-6 text-muted flex-1;
+  }
+  .empty-state {
+    @apply rounded-2xl border border-dashed border-ink/25 p-8 text-center text-muted;
+    border-radius: var(--radius-card);
+  }
+  .category-filters {
+    @apply mb-8 flex flex-wrap gap-2;
+  }
+  .filter-button {
+    @apply rounded-full border border-ink/15 bg-white px-4 py-2 text-sm font-semibold transition;
+  }
+  .filter-button.active {
+    @apply bg-brand text-white border-brand;
+  }
+  .card-actions {
+    @apply mt-4 flex gap-2;
+  }
+
+  .benefits-grid {
+    @apply mt-10 grid gap-5 md:grid-cols-3;
+  }
+  .benefits-grid.icons {
+    @apply md:grid-cols-3;
+  }
+  .benefits-grid.numbered li,
+  .benefits-grid.grid li,
+  .benefits-grid.icons li {
+    @apply list-none border border-ink/10 bg-white p-6;
+    border-radius: var(--radius-card);
+  }
+  .benefits-grid li > span.benefit-number {
+    @apply text-sm font-bold text-accent;
+  }
+  .benefits-grid h3 {
+    @apply mt-4 font-display text-xl font-bold;
+  }
+  .benefits-grid p {
+    @apply mt-3 text-sm leading-6 text-muted;
+  }
+  .benefit-icon {
+    @apply mb-4 grid size-12 place-items-center rounded-full bg-brand/10 text-brand;
+  }
+
+  .contact-section {
+    @apply bg-brand-dark text-white;
+  }
+  .contact-section .eyebrow {
+    @apply text-accent;
+  }
+  .contact-inner {
+    @apply text-center;
+  }
+  .contact-inner h2,
+  .contact-inner > p {
+    @apply mx-auto;
+  }
+  .contact-inner > p {
+    @apply mt-5 max-w-2xl text-white/75;
+  }
+  .contact-inner small {
+    @apply mt-5 block text-white/60;
+  }
+
+  .site-footer {
+    @apply bg-ink py-10 text-white;
+  }
+  .footer-grid {
+    @apply grid gap-6 text-sm md:grid-cols-[1fr_auto] md:items-end;
+  }
+  .footer-grid strong {
+    @apply font-display text-2xl;
+  }
+  .footer-grid p {
+    @apply mt-2 max-w-lg text-white/65;
+  }
+
+  .floating-contact {
+    @apply fixed bottom-5 right-5 z-50 grid size-14 place-items-center rounded-full bg-accent text-xl font-bold text-ink shadow-xl transition hover:-translate-y-1 sm:bottom-7 sm:right-7;
+  }
+
+  /* ProductVisual */
+  .product-visual {
+    @apply relative grid place-items-center overflow-hidden bg-surface-alt;
+  }
+  .product-visual.has-image {
+    @apply bg-white;
+  }
+  .product-visual img {
+    @apply h-full w-full object-cover;
+  }
+
+  /* MediaVisual */
+  .media-visual {
+    @apply relative overflow-hidden bg-surface-alt;
+  }
+
+  /* Modal */
+  .modal-backdrop {
+    @apply fixed inset-0 z-[60] grid place-items-center bg-ink/60 p-4 backdrop-blur-sm;
+  }
+  .order-modal {
+    @apply w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8;
+    border-radius: var(--radius-card);
+  }
+  .order-modal header {
+    @apply flex items-start justify-between gap-4 border-b border-ink/10 pb-4;
+  }
+  .order-modal header h2 {
+    @apply font-display text-2xl font-bold;
+  }
+  .order-modal header p {
+    @apply mt-1 text-sm leading-6 text-muted;
+  }
+  .modal-close {
+    @apply grid size-9 place-items-center rounded-full bg-ink/5 text-xl leading-none transition hover:bg-ink/10;
+  }
+  .form-grid {
+    @apply mt-4 grid gap-4 sm:grid-cols-2;
+  }
+  .form-grid.quantity-grid {
+    @apply sm:grid-cols-2;
+  }
+  .order-modal label {
+    @apply flex flex-col gap-1.5 text-sm font-semibold;
+  }
+  .order-modal input,
+  .order-modal select,
+  .order-modal textarea {
+    @apply rounded-xl border border-ink/15 bg-white px-3 py-2.5 text-sm font-normal outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/20;
+  }
+  .order-modal textarea {
+    @apply min-h-20 resize-y;
+  }
+  .order-submit {
+    @apply mt-6 w-full;
+  }
+  .order-submit:disabled {
+    @apply opacity-50 cursor-not-allowed hover:translate-y-0;
+  }
+  .form-help {
+    @apply mt-3 text-center text-xs leading-5 text-muted;
+  }
+
+  /* WhatsApp panel */
+  .whatsapp-panel {
+    @apply fixed bottom-24 right-5 z-50 w-80 max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-2xl;
+    border-radius: var(--radius-card);
+  }
+  .whatsapp-panel header {
+    @apply bg-brand p-4 text-white;
+  }
+  .whatsapp-panel header strong {
+    @apply font-display text-lg;
+  }
+  .whatsapp-panel header p {
+    @apply mt-1 text-sm text-white/80;
+  }
+  .whatsapp-panel .panel-body {
+    @apply p-4;
+  }
+  .whatsapp-panel .question-link {
+    @apply flex items-center gap-3 rounded-xl border border-ink/10 px-3 py-2.5 text-sm font-semibold transition hover:border-brand hover:bg-brand/5;
+  }
+  .contact-panel-enter-active,
+  .contact-panel-leave-active {
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+  }
+  .contact-panel-enter-from,
+  .contact-panel-leave-to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+@media (max-width: 639px) {
+  .display-title {
+    font-size: clamp(2.25rem, 10vw, 3rem);
+  }
+  .brand span:last-child {
+    max-width: 12rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

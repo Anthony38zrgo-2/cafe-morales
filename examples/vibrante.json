@@ -1,0 +1,8 @@
+{
+  "preset": "vibrante",
+  "palette": "denim-orange",
+  "nota": "Ejemplo vibrante — denim + naranja, tipografía Barlow, botones aero.",
+  "siteConfigOverride": {
+    "theme": { "preset": "vibrante", "palette": "denim-orange" }
+  }
+}

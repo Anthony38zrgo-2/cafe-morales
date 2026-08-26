@@ -1,0 +1,11 @@
+{
+  "preset": "cafetal",
+  "palette": "earth",
+  "nota": "Ejemplo cafetalero — tierra cálida, tipografía serif, ideal finca de altura.",
+  "siteConfigOverride": {
+    "theme": { "preset": "cafetal", "palette": "earth" },
+    "site": {
+      "brand": { "name": "Finca El Alto", "shortName": "FEA", "tagline": "Café de altura · Cajamarca 1.800 msnm" }
+    }
+  }
+}

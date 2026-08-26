@@ -1,0 +1,23 @@
+{
+  "preset": "cafetal",
+  "palette": "custom",
+  "nota": "Ejemplo custom — cliente con identidad propia, hex libres.",
+  "siteConfigOverride": {
+    "theme": {
+      "preset": "cafetal",
+      "palette": "custom",
+      "colors": {
+        "ink": "#1a1a2e",
+        "muted": "#6b7280",
+        "surface": "#fffaf0",
+        "surfaceAlt": "#fde68a",
+        "brand": "#7c2d12",
+        "brandDark": "#451a03",
+        "accent": "#f59e0b"
+      }
+    },
+    "site": {
+      "seo": { "themeColor": "#7c2d12" }
+    }
+  }
+}

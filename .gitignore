@@ -1,0 +1,21 @@
+# Dependencias y resultados generados
+node_modules/
+dist/
+coverage/
+
+# Variables locales; conserva el ejemplo versionado
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs, temporales y editores
+*.log
+.cache/
+.temp/
+*.tmp
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json

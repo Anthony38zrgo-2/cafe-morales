@@ -1,0 +1,85 @@
+/**
+ * PRESET VIBRANTE — audaz, contrastado, juvenil
+ * Usa button-aero y hero con detalle naranja.
+ */
+[data-preset="vibrante"] {
+  --font-sans: "Manrope", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Condensed", Impact, sans-serif;
+  --radius-card: 1.25rem;
+  --radius-button: 9999px;
+  --radius-visual: 1.5rem;
+}
+
+[data-preset="vibrante"] .display-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+[data-preset="vibrante"] .eyebrow {
+  letter-spacing: 0.22em;
+  color: var(--color-accent);
+}
+
+[data-preset="vibrante"] .button-primary {
+  background: linear-gradient(180deg, var(--color-brand) 0%, var(--color-brand-dark) 100%);
+  border: 1px solid color-mix(in srgb, var(--color-brand) 70%, white);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 0 var(--color-brand-dark),
+    0 8px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+[data-preset="vibrante"] .button-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, transparent 42%);
+  pointer-events: none;
+}
+
+[data-preset="vibrante"] .button-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 6px 0 var(--color-brand-dark),
+    0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+[data-preset="vibrante"] .button-primary:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 0 var(--color-brand-dark),
+    0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+[data-preset="vibrante"] .visual-placeholder {
+  border-width: 2px;
+  border-color: color-mix(in srgb, var(--color-brand) 35%, transparent);
+  box-shadow: 8px 8px 0 var(--color-accent);
+}
+
+[data-preset="vibrante"] .catalog-card {
+  border-width: 2px;
+  border-color: var(--color-surface-alt);
+  transition:
+    border-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+[data-preset="vibrante"] .catalog-card:hover {
+  border-color: color-mix(in srgb, var(--color-brand) 20%, transparent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-preset="vibrante"] .site-header {
+  border-bottom-width: 4px;
+  border-bottom-color: var(--color-accent);
+}

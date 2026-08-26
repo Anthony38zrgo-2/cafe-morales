@@ -1,0 +1,35 @@
+/**
+ * PRESET MINIMAL — limpio, profesional, eficiente
+ */
+[data-preset="minimal"] {
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-display: Inter, ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 1rem;
+  --radius-button: 0.75rem;
+  --radius-visual: 1rem;
+}
+
+[data-preset="minimal"] .display-title {
+  letter-spacing: -0.025em;
+  line-height: 1;
+  font-weight: 700;
+}
+
+[data-preset="minimal"] .section-space {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+[data-preset="minimal"] .visual-placeholder {
+  border-style: solid;
+  background: var(--color-surface-alt);
+}
+
+[data-preset="minimal"] .catalog-card {
+  box-shadow: none;
+  border-width: 1px;
+}
+
+[data-preset="minimal"] .button {
+  min-height: 2.75rem;
+}

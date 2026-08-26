@@ -1,0 +1,38 @@
+[
+  {
+    "id": "catimor",
+    "name": "CATIMOR CON CATURRA",
+    "category": "Café en grano",
+    "description": "Café dulce y equilibrado, de cuerpo cremoso y acidez suave. Notas: Chocolate · Panela · Almendra. Altitud 1500 msnm. Cuerpo 5/5.",
+    "price": "S/ 65 por kilo",
+    "badge": "",
+    "visual": { "type": "image", "aspect": "4 / 3", "alt": "Bolsa Catimor con Caturra" }
+  },
+  {
+    "id": "gueisha-catimor",
+    "name": "GEISHA CON CATIMOR",
+    "category": "Café en grano",
+    "description": "Café aromático y dulce, con cuerpo redondo y acidez cítrica moderada. Notas: Caramelo · Naranja · Chocolate. Altitud 1500–2000 msnm. Cuerpo 4/5.",
+    "price": "S/ 95 por kilo",
+    "badge": "Lo más vendido",
+    "visual": { "type": "image", "aspect": "4 / 3", "alt": "Bolsa Geisha con Catimor" }
+  },
+  {
+    "id": "geisha",
+    "name": "GEISHA",
+    "category": "Café en grano",
+    "description": "Café floral y elegante, de cuerpo sedoso y acidez brillante. Notas: Jazmín · Durazno · Mandarina. Altitud 1900–2000 msnm. Cuerpo 2/5.",
+    "price": "S/ 170 por kilo",
+    "badge": "",
+    "visual": { "type": "image", "aspect": "4 / 3", "alt": "Bolsa Geisha" }
+  },
+  {
+    "id": "java",
+    "name": "JAVA",
+    "category": "Café en grano",
+    "description": "Café aromático y frutal, con cuerpo sedoso y acidez limpia. Notas: Durazno · Mandarina · Miel. Altitud 1850 msnm. Cuerpo 3/5.",
+    "price": "S/ 80 por kilo",
+    "badge": "",
+    "visual": { "type": "image", "aspect": "4 / 3", "alt": "Bolsa Java" }
+  }
+]

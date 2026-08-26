@@ -1,0 +1,8 @@
+{
+  "preset": "minimal",
+  "palette": "graphite",
+  "nota": "Ejemplo minimal — grafito profesional, radios pequeños, para catálogo general.",
+  "siteConfigOverride": {
+    "theme": { "preset": "minimal", "palette": "graphite" }
+  }
+}
