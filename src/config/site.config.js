@@ -1,7 +1,7 @@
 /**
  * CENTRO DE CONFIGURACIÓN — CAFÉ MORALES
  * Migrado desde cafe-del-monte, adaptado a plantilla v2.
- * Preset cafetal + paleta earth (curada, cálida cafetalera).
+ * Preset vibrante + paleta earth (prueba de contraste audaz).
  * Simplificado: Card genérica, OrderModal simple, deliveryLocations v2, #catalog.
  */
 export const siteConfig = {
@@ -17,7 +17,7 @@ export const siteConfig = {
       title: "Café Morales | Café de especialidad peruano",
       description:
         "Café peruano de especialidad de Jaén, Cajamarca. Catimor, Geisha con Catimor, Geisha y Java. Envíos a todo el Perú.",
-      themeColor: "#5c3d2e",
+      themeColor: "#4a1a2f",
     },
     contact: {
       phone: "51987755593",
@@ -29,9 +29,9 @@ export const siteConfig = {
   },
 
   theme: {
-    preset: "cafetal",
-    palette: "earth",
-    typography: "sans-display",
+    preset: "vibrante",
+    palette: "wine",
+    typography: "display-heavy",
     radius: "xl",
   },
 
