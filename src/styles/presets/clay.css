@@ -1,0 +1,37 @@
+/**
+ * PRESET CLAY — barro, terracota, extruido suave
+ */
+[data-preset="clay"] {
+  --font-sans: "DM Sans", Inter, sans-serif;
+  --font-display: Fraunces, Georgia, serif;
+  --radius-card: 1.75rem;
+  --radius-button: 9999px;
+  --radius-visual: 2rem;
+}
+
+[data-preset="clay"] .display-title {
+  letter-spacing: -0.03em;
+  line-height: 0.97;
+}
+
+[data-preset="clay"] .visual-placeholder {
+  border: none;
+  background: var(--color-surface-alt);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.7),
+    0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-preset="clay"] .catalog-card {
+  border: none;
+  background: var(--color-surface);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.8) inset,
+    0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+[data-preset="clay"] .button-primary {
+  box-shadow:
+    0 4px 0 color-mix(in srgb, var(--color-brand-dark) 80%, black),
+    0 8px 16px rgba(0, 0, 0, 0.12);
+}

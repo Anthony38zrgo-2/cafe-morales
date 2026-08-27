@@ -1,0 +1,33 @@
+/**
+ * PRESET ORGANIC — suave, natural, blob
+ */
+[data-preset="organic"] {
+  --font-sans: "Plus Jakarta Sans", Inter, sans-serif;
+  --font-display: Fraunces, Georgia, serif;
+  --radius-card: 1.75rem;
+  --radius-button: 9999px;
+  --radius-visual: 2.5rem;
+}
+
+[data-preset="organic"] .display-title {
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-weight: 800;
+}
+
+[data-preset="organic"] .visual-placeholder {
+  border-width: 1.5px;
+  border-color: color-mix(in srgb, var(--color-brand) 20%, transparent);
+  border-radius: var(--radius-visual);
+}
+
+[data-preset="organic"] .catalog-card {
+  border-width: 1.5px;
+  border-color: color-mix(in srgb, var(--color-brand) 10%, var(--color-surface-alt));
+  border-radius: var(--radius-card);
+}
+
+[data-preset="organic"] .section-space {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}

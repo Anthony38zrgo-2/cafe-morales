@@ -1,0 +1,37 @@
+/**
+ * PRESET BRUTALIST — bloques, borde duro, sin radius
+ */
+[data-preset="brutalist"] {
+  --font-sans: "Space Grotesk", Inter, sans-serif;
+  --font-display: "Space Grotesk", Inter, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius-card: 0.5rem;
+  --radius-button: 0.25rem;
+  --radius-visual: 0.5rem;
+}
+
+[data-preset="brutalist"] .display-title {
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+[data-preset="brutalist"] .eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+[data-preset="brutalist"] .button,
+[data-preset="brutalist"] .catalog-card,
+[data-preset="brutalist"] .visual-placeholder {
+  border-width: 2px;
+  border-color: var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-ink);
+  border-radius: var(--radius-card);
+}
+
+[data-preset="brutalist"] .site-header {
+  border-bottom: 3px solid var(--color-ink);
+}

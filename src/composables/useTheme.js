@@ -4,11 +4,18 @@
  */
 import { watchEffect } from "vue";
 import { resolvePaletteColors } from "@/config/palettes";
+import { loadPalette, loadPreset } from "@/composables/useLazyTheme";
 
 export function useTheme(config) {
   function applyTheme() {
     const theme = config.theme;
     if (!theme) return;
+
+    // Lazy-load solo en dev (prod ya tiene todo en main.css eager)
+    if (import.meta.env.DEV) {
+      loadPalette(theme.palette);
+      loadPreset(theme.preset);
+    }
 
     const html = document.documentElement;
     html.setAttribute("data-preset", theme.preset);
@@ -56,20 +63,107 @@ export function useTheme(config) {
       html.style.removeProperty("--radius-visual");
     }
 
-    // Typography override
+    // Typography override — 10 opciones, cubre presets 20. Cada define 5 tokens (sans/display/serif/mono/accent)
     const typographyMap = {
-      "sans-display": { sans: "Inter, ui-sans-serif, system-ui, sans-serif", display: "Georgia, 'Times New Roman', serif" },
-      "display-heavy": { sans: "'Manrope', Inter, ui-sans-serif, system-ui, sans-serif", display: "'Barlow Condensed', Impact, sans-serif" },
-      elegant: { sans: "Inter, ui-sans-serif, system-ui, sans-serif", display: "Georgia, 'Times New Roman', serif" },
-      mono: { sans: "ui-monospace, monospace", display: "ui-monospace, monospace" },
+      "sans-display": {
+        sans: "Inter, ui-sans-serif, system-ui, sans-serif",
+        display: "Fraunces, Georgia, 'Times New Roman', serif",
+        serif: "Fraunces, Georgia, serif",
+        mono: "'JetBrains Mono', ui-monospace, monospace",
+        accent: "Sora, ui-sans-serif, sans-serif",
+      },
+      "display-heavy": {
+        sans: "'Manrope', Inter, ui-sans-serif, system-ui, sans-serif",
+        display: "'Barlow Condensed', Impact, sans-serif",
+        serif: "Fraunces, Georgia, serif",
+        mono: "'JetBrains Mono', ui-monospace, monospace",
+        accent: "Sora, sans-serif",
+      },
+      elegant: {
+        sans: "'DM Sans', Inter, ui-sans-serif, sans-serif",
+        display: "'Cormorant Garamond', Georgia, serif",
+        serif: "'Cormorant Garamond', Georgia, serif",
+        mono: "'JetBrains Mono', monospace",
+        accent: "Fraunces, serif",
+      },
+      mono: {
+        sans: "'JetBrains Mono', ui-monospace, monospace",
+        display: "'JetBrains Mono', ui-monospace, monospace",
+        serif: "'JetBrains Mono', monospace",
+        mono: "'JetBrains Mono', monospace",
+        accent: "'JetBrains Mono', monospace",
+      },
+      editorial: {
+        sans: "'DM Sans', Inter, sans-serif",
+        display: "Fraunces, Georgia, serif",
+        serif: "Fraunces, Georgia, serif",
+        mono: "'JetBrains Mono', monospace",
+        accent: "'Instrument Serif', Georgia, serif",
+      },
+      grotesk: {
+        sans: "'Space Grotesk', Inter, sans-serif",
+        display: "'Space Grotesk', Inter, sans-serif",
+        serif: "'Cormorant Garamond', serif",
+        mono: "'JetBrains Mono', monospace",
+        accent: "Sora, sans-serif",
+      },
+      "serif-mono": {
+        sans: "'Cormorant Garamond', Georgia, serif",
+        display: "'JetBrains Mono', monospace",
+        serif: "'Cormorant Garamond', serif",
+        mono: "'JetBrains Mono', monospace",
+        accent: "Inter, sans-serif",
+      },
+      handmade: {
+        sans: "'Plus Jakarta Sans', Inter, sans-serif",
+        display: "'Instrument Serif', Georgia, serif",
+        serif: "'Instrument Serif', serif",
+        mono: "'JetBrains Mono', monospace",
+        accent: "Fraunces, serif",
+      },
+      corporate: {
+        sans: "Inter, ui-sans-serif, system-ui, sans-serif",
+        display: "Sora, Inter, sans-serif",
+        serif: "Fraunces, serif",
+        mono: "'JetBrains Mono', monospace",
+        accent: "Outfit, sans-serif",
+      },
+      organic: {
+        sans: "'Plus Jakarta Sans', Inter, sans-serif",
+        display: "Fraunces, Georgia, serif",
+        serif: "Fraunces, serif",
+        mono: "'JetBrains Mono', monospace",
+        accent: "'DM Sans', sans-serif",
+      },
+      bauhaus: {
+        sans: "'Poppins', 'Space Grotesk', Inter, sans-serif",
+        display: "'Poppins', 'Space Grotesk', Inter, sans-serif",
+        serif: "'Space Grotesk', sans-serif",
+        mono: "'JetBrains Mono', monospace",
+        accent: "'Poppins', sans-serif",
+      },
+      pastel: {
+        sans: "'Poppins', Inter, sans-serif",
+        display: "Fraunces, Georgia, serif",
+        serif: "Fraunces, serif",
+        mono: "'JetBrains Mono', monospace",
+        accent: "Sora, sans-serif",
+      },
     };
     if (theme.typography && typographyMap[theme.typography]) {
       const t = typographyMap[theme.typography];
       html.style.setProperty("--font-sans", t.sans);
       html.style.setProperty("--font-display", t.display);
-    } else if (theme.typography) {
+      html.style.setProperty("--font-serif", t.serif);
+      html.style.setProperty("--font-mono", t.mono);
+      html.style.setProperty("--font-accent", t.accent);
+    } else {
+      // Vacío/indefinido o inválido → deja ver fuente del preset ([data-preset])
       html.style.removeProperty("--font-sans");
       html.style.removeProperty("--font-display");
+      html.style.removeProperty("--font-serif");
+      html.style.removeProperty("--font-mono");
+      html.style.removeProperty("--font-accent");
     }
 
     // SEO theme-color

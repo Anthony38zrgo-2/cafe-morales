@@ -42,8 +42,8 @@
       "type": "object",
       "required": ["preset", "palette"],
       "properties": {
-        "preset": { "enum": ["cafetal", "minimal", "vibrante"] },
-        "palette": { "enum": ["forest", "denim-orange", "earth", "ocean", "sunset", "graphite", "wine", "midnight", "sand", "custom"] },
+        "preset": { "enum": ["cafetal", "minimal", "vibrante", "editorial", "organic", "brutalist", "glass", "luxury", "retro", "corporate", "handmade", "mono-accent", "clay", "air", "paper", "midnight-glass", "solar", "ink", "editorial-soft", "neo-brutal", "bauhaus", "bauhaus-pastel"] },
+        "palette": { "enum": ["forest", "denim-orange", "earth", "ocean", "sunset", "graphite", "wine", "midnight", "sand", "sage", "terracotta", "mustard", "plum", "teal", "coral", "slate", "amber", "olive", "berry", "sky", "mint", "lavender", "charcoal", "sandstone", "clay", "moss", "dusk", "pepper", "honey", "indigo", "forest-dark", "denim-orange-dark", "earth-dark", "ocean-dark", "sunset-dark", "graphite-dark", "wine-dark", "midnight-dark", "sand-dark", "sage-dark", "terracotta-dark", "mustard-dark", "plum-dark", "teal-dark", "coral-dark", "slate-dark", "amber-dark", "olive-dark", "berry-dark", "sky-dark", "mint-dark", "lavender-dark", "charcoal-dark", "sandstone-dark", "clay-dark", "moss-dark", "dusk-dark", "pepper-dark", "honey-dark", "indigo-dark", "sage-pastel", "mint-pastel", "lavender-pastel", "sky-pastel", "peach-pastel", "butter-pastel", "rose-pastel", "clay-pastel", "sand-pastel", "dusk-pastel", "teal-pastel", "moss-pastel", "slate-pastel", "indigo-pastel", "strawberry-pastel", "custom"] },
         "colors": {
           "type": "object",
           "properties": {
@@ -56,7 +56,7 @@
             "accent": { "type": "string", "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$" }
           }
         },
-        "typography": { "enum": ["sans-display", "display-heavy", "elegant", "mono"] },
+        "typography": { "enum": ["sans-display", "display-heavy", "elegant", "mono", "editorial", "grotesk", "serif-mono", "handmade", "corporate", "organic", "bauhaus", "pastel"] },
         "radius": { "enum": ["sm", "md", "xl", "2xl", "full"] }
       }
     },

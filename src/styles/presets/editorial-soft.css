@@ -1,0 +1,37 @@
+/**
+ * PRESET EDITORIAL-SOFT — fraunces soft, aire editorial
+ */
+[data-preset="editorial-soft"] {
+  --font-sans: "Plus Jakarta Sans", Inter, sans-serif;
+  --font-display: Fraunces, Georgia, serif;
+  --font-serif: Fraunces, serif;
+  --radius-card: 1.25rem;
+  --radius-button: 9999px;
+  --radius-visual: 1.75rem;
+}
+
+[data-preset="editorial-soft"] .display-title {
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.97;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+}
+
+[data-preset="editorial-soft"] .eyebrow {
+  font-family: var(--font-serif);
+  font-style: italic;
+  letter-spacing: 0.1em;
+  text-transform: none;
+}
+
+[data-preset="editorial-soft"] .catalog-card {
+  border-width: 1px;
+  border-color: color-mix(in srgb, var(--color-ink) 7%, transparent);
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+}
+
+[data-preset="editorial-soft"] .visual-placeholder {
+  border-radius: var(--radius-visual);
+  background: color-mix(in srgb, var(--color-surface-alt) 70%, white);
+}

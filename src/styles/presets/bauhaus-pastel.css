@@ -1,0 +1,52 @@
+/**
+ * PRESET BAUHAUS-PASTEL — geométrico pero pastel suave
+ */
+[data-preset="bauhaus-pastel"] {
+  --font-sans: "Poppins", Inter, sans-serif;
+  --font-display: "Poppins", "Space Grotesk", sans-serif;
+  --radius-card: 0.5rem;
+  --radius-button: 0.375rem;
+  --radius-visual: 0.75rem;
+  --bauhaus-red: #e8a09a;
+  --bauhaus-yellow: #f5e6a8;
+  --bauhaus-blue: #a8c8e0;
+}
+
+[data-preset="bauhaus-pastel"] .display-title {
+  letter-spacing: 0.06em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+[data-preset="bauhaus-pastel"] .catalog-card {
+  border: 1.5px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  background: var(--color-surface);
+  border-top: 4px solid var(--bauhaus-red);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+[data-preset="bauhaus-pastel"] .catalog-card:nth-child(3n + 2) {
+  border-top-color: var(--bauhaus-yellow);
+}
+[data-preset="bauhaus-pastel"] .catalog-card:nth-child(3n) {
+  border-top-color: var(--bauhaus-blue);
+}
+
+[data-preset="bauhaus-pastel"] .visual-placeholder {
+  border: 1.5px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+  background: color-mix(in srgb, var(--color-surface-alt) 60%, white);
+}
+
+[data-preset="bauhaus-pastel"] .eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+[data-preset="bauhaus-pastel"] .button-primary {
+  background: var(--color-ink);
+  color: var(--color-surface);
+  border: 1.5px solid var(--color-ink);
+}

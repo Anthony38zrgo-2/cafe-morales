@@ -16,7 +16,7 @@ export const SECTION_IDS = Object.freeze([
 
 export const SECTION_VARIANTS = Object.freeze({
   hero: ["split", "centered", "highlight"],
-  catalog: ["grid", "list"],
+  catalog: ["grid", "list", "carousel", "masonry"],
   about: ["split", "split-reverse", "centered"],
   benefits: ["numbered", "grid", "icons"],
   contact: ["centered", "split"],

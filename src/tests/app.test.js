@@ -13,14 +13,43 @@ describe("config", () => {
     expect(validateConfig(siteConfig)).toEqual([]);
   });
 
-  it("expone 3 presets", () => {
-    expect(PRESETS).toEqual(["cafetal", "minimal", "vibrante"]);
+  it("expone 22 presets", () => {
+    expect(PRESETS).toEqual([
+      "cafetal",
+      "minimal",
+      "vibrante",
+      "editorial",
+      "organic",
+      "brutalist",
+      "glass",
+      "luxury",
+      "retro",
+      "corporate",
+      "handmade",
+      "mono-accent",
+      "clay",
+      "air",
+      "paper",
+      "midnight-glass",
+      "solar",
+      "ink",
+      "editorial-soft",
+      "neo-brutal",
+      "bauhaus",
+      "bauhaus-pastel",
+    ]);
   });
 
   it("expone paletas curadas + custom", () => {
     expect(PALETTES).toContain("forest");
+    expect(PALETTES).toContain("sage");
+    expect(PALETTES).toContain("indigo");
+    expect(PALETTES).toContain("forest-dark");
+    expect(PALETTES).toContain("indigo-dark");
+    expect(PALETTES).toContain("sage-pastel");
+    expect(PALETTES).toContain("strawberry-pastel");
     expect(PALETTES).toContain("custom");
-    expect(PALETTES.length).toBeGreaterThanOrEqual(9);
+    expect(PALETTES.length).toBe(76); // 75 curadas (30 light +30 dark +15 pastel) + custom
   });
 
   it("ordena secciones por order", () => {

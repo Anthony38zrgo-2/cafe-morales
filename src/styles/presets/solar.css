@@ -1,0 +1,44 @@
+/**
+ * PRESET SOLAR — sol, amarillo y negro gráfico
+ */
+[data-preset="solar"] {
+  --font-sans: "Manrope", Inter, sans-serif;
+  --font-display: "Barlow Condensed", Impact, sans-serif;
+  --radius-card: 1rem;
+  --radius-button: 0.5rem;
+  --radius-visual: 1rem;
+}
+
+[data-preset="solar"] .display-title {
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+[data-preset="solar"] .eyebrow {
+  background: var(--color-accent);
+  color: var(--color-ink);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.16em;
+  font-weight: 800;
+}
+
+[data-preset="solar"] .visual-placeholder {
+  border-width: 3px;
+  border-color: var(--color-ink);
+  background: var(--color-accent);
+  box-shadow: 6px 6px 0 var(--color-ink);
+}
+
+[data-preset="solar"] .catalog-card {
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-card);
+}
+
+[data-preset="solar"] .button-primary {
+  background: var(--color-ink);
+  color: var(--color-accent);
+  border: 2px solid var(--color-ink);
+}

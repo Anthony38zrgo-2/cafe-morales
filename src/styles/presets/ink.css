@@ -1,0 +1,40 @@
+/**
+ * PRESET INK — tinta, serif + mono alto contraste
+ */
+[data-preset="ink"] {
+  --font-sans: "Cormorant Garamond", Georgia, serif;
+  --font-display: "JetBrains Mono", monospace;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius-card: 0.375rem;
+  --radius-button: 0.375rem;
+  --radius-visual: 0.375rem;
+}
+
+[data-preset="ink"] .display-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  line-height: 0.96;
+  font-weight: 700;
+  text-transform: none;
+  border-left: 4px solid var(--color-accent);
+  padding-left: 14px;
+}
+
+[data-preset="ink"] .eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.2em;
+  border-bottom: 1px solid var(--color-ink);
+  padding-bottom: 6px;
+  display: inline-block;
+}
+
+[data-preset="ink"] .catalog-card {
+  border-width: 1.5px;
+  border-color: var(--color-ink);
+  border-radius: var(--radius-card);
+}
+
+[data-preset="ink"] .visual-placeholder {
+  border: 1.5px solid var(--color-ink);
+  background: var(--color-surface-alt);
+}

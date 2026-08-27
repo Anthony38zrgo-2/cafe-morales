@@ -50,7 +50,23 @@ export function validateConfig(config) {
         }
       }
     }
-    if (config.theme.typography && !["sans-display", "display-heavy", "elegant", "mono"].includes(config.theme.typography)) {
+    if (
+      config.theme.typography &&
+      ![
+        "sans-display",
+        "display-heavy",
+        "elegant",
+        "mono",
+        "editorial",
+        "grotesk",
+        "serif-mono",
+        "handmade",
+        "corporate",
+        "organic",
+        "bauhaus",
+        "pastel",
+      ].includes(config.theme.typography)
+    ) {
       errors.push(err("theme.typography", "valor no válido"));
     }
     if (config.theme.radius && !["sm", "md", "xl", "2xl", "full"].includes(config.theme.radius)) {

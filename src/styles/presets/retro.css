@@ -1,0 +1,39 @@
+/**
+ * PRESET RETRO — 70s warm, sellos
+ */
+[data-preset="retro"] {
+  --font-sans: "DM Sans", Inter, sans-serif;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --radius-card: 1.25rem;
+  --radius-button: 9999px;
+  --radius-visual: 1.75rem;
+}
+
+[data-preset="retro"] .display-title {
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  transform: rotate(-0.4deg);
+}
+
+[data-preset="retro"] .eyebrow {
+  background: var(--color-accent);
+  color: var(--color-ink);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  display: inline-block;
+  letter-spacing: 0.14em;
+}
+
+[data-preset="retro"] .visual-placeholder {
+  border-width: 2px;
+  border-style: dashed;
+  transform: rotate(-0.6deg);
+}
+
+[data-preset="retro"] .catalog-card {
+  transform: rotate(-0.2deg);
+  border-width: 1.5px;
+}
+[data-preset="retro"] .catalog-card:nth-child(even) {
+  transform: rotate(0.3deg);
+}

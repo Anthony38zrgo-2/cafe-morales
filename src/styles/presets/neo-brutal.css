@@ -1,0 +1,42 @@
+/**
+ * PRESET NEO-BRUTAL — brutalismo neo, plano y duro
+ */
+[data-preset="neo-brutal"] {
+  --font-sans: "Space Grotesk", Inter, sans-serif;
+  --font-display: "Space Grotesk", Inter, sans-serif;
+  --radius-card: 0.25rem;
+  --radius-button: 0.25rem;
+  --radius-visual: 0.25rem;
+}
+
+[data-preset="neo-brutal"] .display-title {
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+[data-preset="neo-brutal"] .button {
+  border-width: 2px;
+  border-color: var(--color-ink);
+  box-shadow: 3px 3px 0 var(--color-ink);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+[data-preset="neo-brutal"] .catalog-card {
+  border: 2px solid var(--color-ink);
+  box-shadow: 5px 5px 0 var(--color-ink);
+  background: var(--color-surface);
+}
+
+[data-preset="neo-brutal"] .visual-placeholder {
+  border: 2px solid var(--color-ink);
+  background: var(--color-accent);
+  box-shadow: 4px 4px 0 var(--color-ink);
+}
+
+[data-preset="neo-brutal"] .site-header {
+  border-bottom: 2px solid var(--color-ink);
+}

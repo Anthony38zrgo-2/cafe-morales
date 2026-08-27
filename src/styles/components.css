@@ -52,13 +52,13 @@
     @apply bg-brand text-white hover:bg-brand-dark;
   }
   .button-secondary {
-    @apply border border-ink/20 bg-white text-ink hover:border-brand;
+    @apply border border-ink/20 bg-surface text-ink hover:border-brand;
   }
   .button-ghost {
     @apply bg-transparent text-brand hover:bg-brand/10;
   }
   .button-light {
-    @apply mt-8 bg-white text-brand-dark;
+    @apply mt-8 bg-surface text-brand-dark;
   }
 
   .site-header {
@@ -129,8 +129,63 @@
   .catalog-grid.list .catalog-card .visual-placeholder {
     @apply sm:w-64 sm:shrink-0;
   }
+  .catalog-grid.carousel {
+    @apply flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    scroll-padding-inline: 1rem;
+  }
+  .catalog-grid.carousel::-webkit-scrollbar {
+    display: none;
+  }
+  .catalog-grid.carousel .catalog-card {
+    @apply shrink-0 snap-start;
+    flex: 0 0 85%;
+  }
+  @media (min-width: 768px) {
+    .catalog-grid.carousel .catalog-card {
+      flex: 0 0 46%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .catalog-grid.carousel .catalog-card {
+      flex: 0 0 31%;
+    }
+  }
+  .carousel-wrap {
+    @apply relative;
+  }
+  .carousel-nav {
+    @apply absolute top-1/2 -translate-y-1/2 grid size-10 place-items-center rounded-full bg-surface shadow border border-ink/10 text-ink hover:bg-brand hover:text-white transition;
+  }
+  .carousel-nav.prev {
+    @apply -left-3 sm:-left-5;
+  }
+  .carousel-nav.next {
+    @apply -right-3 sm:-right-5;
+  }
+  .catalog-grid.masonry {
+    @apply block;
+    columns: 1;
+    column-gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .catalog-grid.masonry {
+      columns: 2;
+    }
+  }
+  @media (min-width: 1024px) {
+    .catalog-grid.masonry {
+      columns: 3;
+    }
+  }
+  .catalog-grid.masonry .catalog-card {
+    break-inside: avoid;
+    @apply mb-6 inline-block w-full;
+  }
   .catalog-card {
-    @apply overflow-hidden border border-ink/10 bg-white shadow-sm;
+    @apply overflow-hidden border border-ink/10 bg-surface shadow-sm;
     border-radius: var(--radius-card);
   }
   .catalog-card .media-visual,
@@ -157,7 +212,7 @@
     @apply mb-8 flex flex-wrap gap-2;
   }
   .filter-button {
-    @apply rounded-full border border-ink/15 bg-white px-4 py-2 text-sm font-semibold transition;
+    @apply rounded-full border border-ink/15 bg-surface px-4 py-2 text-sm font-semibold transition;
   }
   .filter-button.active {
     @apply bg-brand text-white border-brand;
@@ -175,7 +230,7 @@
   .benefits-grid.numbered li,
   .benefits-grid.grid li,
   .benefits-grid.icons li {
-    @apply list-none border border-ink/10 bg-white p-6;
+    @apply list-none border border-ink/10 bg-surface p-6;
     border-radius: var(--radius-card);
   }
   .benefits-grid li > span.benefit-number {
@@ -233,7 +288,7 @@
     @apply relative grid place-items-center overflow-hidden bg-surface-alt;
   }
   .product-visual.has-image {
-    @apply bg-white;
+    @apply bg-surface;
   }
   .product-visual img {
     @apply h-full w-full object-cover;
@@ -249,7 +304,7 @@
     @apply fixed inset-0 z-[60] grid place-items-center bg-ink/60 p-4 backdrop-blur-sm;
   }
   .order-modal {
-    @apply w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8;
+    @apply w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-surface p-6 shadow-2xl sm:p-8;
     border-radius: var(--radius-card);
   }
   .order-modal header {
@@ -276,7 +331,7 @@
   .order-modal input,
   .order-modal select,
   .order-modal textarea {
-    @apply rounded-xl border border-ink/15 bg-white px-3 py-2.5 text-sm font-normal outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/20;
+    @apply rounded-xl border border-ink/15 bg-surface px-3 py-2.5 text-sm font-normal outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/20;
   }
   .order-modal textarea {
     @apply min-h-20 resize-y;
@@ -293,7 +348,7 @@
 
   /* WhatsApp panel */
   .whatsapp-panel {
-    @apply fixed bottom-24 right-5 z-50 w-80 max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-2xl;
+    @apply fixed bottom-24 right-5 z-50 w-80 max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-ink/10 bg-surface shadow-2xl;
     border-radius: var(--radius-card);
   }
   .whatsapp-panel header {

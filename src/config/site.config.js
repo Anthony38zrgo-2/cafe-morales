@@ -1,10 +1,13 @@
+import { reactive } from "vue";
+
 /**
  * CENTRO DE CONFIGURACIÓN — CAFÉ MORALES
  * Migrado desde cafe-del-monte, adaptado a plantilla v2.
  * Preset vibrante + paleta earth (prueba de contraste audaz).
  * Simplificado: Card genérica, OrderModal simple, deliveryLocations v2, #catalog.
+ * En DEV es reactive para que DevSidebar (localStorage) haga live preview.
  */
-export const siteConfig = {
+const rawConfig = {
   site: {
     brand: {
       name: "Café Morales",
@@ -199,3 +202,5 @@ export const siteConfig = {
     units: ["250gr", "500gr", "1kilo", "sacos"],
   },
 };
+
+export const siteConfig = import.meta.env.DEV ? reactive(rawConfig) : rawConfig;

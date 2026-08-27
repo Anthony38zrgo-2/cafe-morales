@@ -9,6 +9,13 @@ coverage/
 .env.*.local
 !.env.example
 
+# Live dev (File System Access — 2 JSON: base + live)
+src/config/site.live.json
+src/data/catalog.live.json
+src/**/*.live.json
+src/**/*.live.js
+*.live.json
+
 # Logs, temporales y editores
 *.log
 .cache/

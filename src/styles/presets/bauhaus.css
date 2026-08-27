@@ -1,0 +1,109 @@
+/**
+ * PRESET BAUHAUS — geométrico primario, grid, Poppins
+ */
+[data-preset="bauhaus"] {
+  --font-sans: "Poppins", "Space Grotesk", Inter, sans-serif;
+  --font-display: "Poppins", "Space Grotesk", Inter, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius-card: 0px;
+  --radius-button: 0px;
+  --radius-visual: 0px;
+  --bauhaus-red: #e30613;
+  --bauhaus-yellow: #f9ed00;
+  --bauhaus-blue: #0060a9;
+  --bauhaus-line: 3px;
+}
+
+[data-preset="bauhaus"] .display-title {
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  line-height: 0.92;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+[data-preset="bauhaus"] .eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-bottom: 3px solid var(--color-ink);
+  padding-bottom: 6px;
+  display: inline-block;
+}
+
+[data-preset="bauhaus"] .button {
+  border-radius: var(--radius-button);
+  border: 2.5px solid var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+
+[data-preset="bauhaus"] .catalog-card {
+  border: 2.5px solid var(--color-ink);
+  box-shadow: 6px 6px 0 var(--color-ink);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+[data-preset="bauhaus"] .catalog-card:nth-child(3n + 1) {
+  border-top: 6px solid var(--bauhaus-red);
+}
+[data-preset="bauhaus"] .catalog-card:nth-child(3n + 2) {
+  border-top: 6px solid var(--bauhaus-yellow);
+}
+[data-preset="bauhaus"] .catalog-card:nth-child(3n) {
+  border-top: 6px solid var(--bauhaus-blue);
+}
+
+[data-preset="bauhaus"] .visual-placeholder {
+  border: 2.5px solid var(--color-ink);
+  background: var(--color-accent);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-preset="bauhaus"] .visual-placeholder::before {
+  content: "";
+  position: absolute;
+  inset: auto -20% -30% auto;
+  width: 65%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--bauhaus-yellow);
+  opacity: 0.9;
+}
+
+[data-preset="bauhaus"] .site-header {
+  border-bottom: 3px solid var(--color-ink);
+}
+
+[data-preset="bauhaus"] .page-shell {
+  background-image:
+    linear-gradient(var(--color-ink) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-ink) 1px, transparent 1px);
+  background-size: 100% 24px, 24px 100%;
+  background-position: 0 0;
+}
+[data-preset="bauhaus"] .page-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: inherit;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+[data-preset="bauhaus"] .filter-button.active {
+  background: var(--bauhaus-red);
+  color: white;
+  border-color: var(--color-ink);
+}
+
+[data-preset="bauhaus"] .benefit-icon {
+  border: 2px solid var(--color-ink);
+  background: var(--bauhaus-yellow);
+  color: var(--color-ink);
+}

@@ -5,7 +5,10 @@
  */
 @theme {
   --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
-  --font-display: Georgia, "Times New Roman", serif;
+  --font-display: Fraunces, Georgia, "Times New Roman", serif;
+  --font-serif: Fraunces, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-accent: Sora, ui-sans-serif, system-ui, sans-serif;
 
   --color-ink: #172033;
   --color-muted: #5f6878;
@@ -27,4 +30,7 @@
 
   /* Tipografía escalable */
   --text-display-base: 3rem;
+  --text-display-lg: clamp(2.5rem, 8vw, 4.5rem);
+  --tracking-display: -0.035em;
+  --leading-display: 0.98;
 }

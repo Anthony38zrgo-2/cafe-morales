@@ -1,0 +1,39 @@
+/**
+ * PRESET MONO-ACCENT — técnico, mono para eyebrow
+ */
+[data-preset="mono-accent"] {
+  --font-sans: Inter, sans-serif;
+  --font-display: "JetBrains Mono", monospace;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius-card: 0.5rem;
+  --radius-button: 0.375rem;
+  --radius-visual: 0.5rem;
+}
+
+[data-preset="mono-accent"] .display-title {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+[data-preset="mono-accent"] .eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.16em;
+  font-size: 0.7rem;
+  background: var(--color-ink);
+  color: var(--color-surface);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+[data-preset="mono-accent"] .catalog-card {
+  border-width: 1px;
+  border-color: var(--color-ink);
+  font-family: var(--font-mono);
+}
+
+[data-preset="mono-accent"] .benefit-number {
+  font-family: var(--font-mono);
+}

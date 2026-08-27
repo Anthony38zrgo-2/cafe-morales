@@ -1,0 +1,35 @@
+/**
+ * PRESET GLASS — cristal, blur, translúcido
+ */
+[data-preset="glass"] {
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-display: Sora, Inter, sans-serif;
+  --radius-card: 1.25rem;
+  --radius-button: 9999px;
+  --radius-visual: 1.5rem;
+}
+
+[data-preset="glass"] .display-title {
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-weight: 700;
+}
+
+[data-preset="glass"] .catalog-card {
+  background: color-mix(in srgb, var(--color-surface) 70%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, white 40%, transparent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+[data-preset="glass"] .visual-placeholder {
+  background: color-mix(in srgb, var(--color-surface-alt) 60%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+[data-preset="glass"] .site-header {
+  background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}

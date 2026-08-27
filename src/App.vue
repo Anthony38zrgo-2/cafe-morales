@@ -1,21 +1,31 @@
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, onMounted, defineAsyncComponent } from "vue";
 import { siteConfig } from "@/config/site.config";
 import { validateConfig } from "@/config/validate";
 import { getOrderedSections, getNavigationItems, isSectionEnabled } from "@/config/sections";
 import { useTheme } from "@/composables/useTheme";
+import { useDevConfig } from "@/composables/useDevConfig";
+import { useCatalogStore } from "@/composables/useCatalogStore";
 import AppHeader from "@/components/layout/AppHeader.vue";
 import AppFooter from "@/components/layout/AppFooter.vue";
 import SectionRenderer from "@/components/sections/SectionRenderer.vue";
 import FloatingContact from "@/components/ui/FloatingContact.vue";
 
-// Validación en dev
-const errors = validateConfig(siteConfig);
-if (errors.length) {
-  console.warn("Configuración inválida:\n - " + errors.join("\n - "));
+const isDev = import.meta.env.DEV;
+const DevSidebar = isDev ? defineAsyncComponent(() => import("@/components/dev/DevSidebar.vue")) : null;
+
+// Validación solo en dev (evita ruido en prod)
+if (isDev) {
+  const errors = validateConfig(siteConfig);
+  if (errors.length) {
+    console.warn("Configuración inválida:\n - " + errors.join("\n - "));
+  }
+  // Hidrata siteConfig y catálogo desde localStorage (reactive en DEV)
+  useDevConfig();
+  useCatalogStore();
 }
 
-// Tema
+// Tema (siteConfig es reactive en DEV, watchEffect re-aplica)
 useTheme(siteConfig);
 
 const orderedContent = computed(() =>
@@ -71,4 +81,5 @@ onMounted(() => {
       :variant="floatingSection?.variant || 'panel'"
     />
   </div>
+  <component :is="DevSidebar" v-if="isDev" />
 </template>
