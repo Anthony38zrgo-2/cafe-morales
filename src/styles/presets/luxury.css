@@ -1,7 +1,9 @@
 /**
- * PRESET LUXURY — oro, burdeos, editorial lujo
+ * PRESET LUXURY — lujo: Cormorant, tracking amplio, bordes oro, ink bg
+ * Firma: botones uppercase con borde accent, contact con filete dorado
  */
 [data-preset="luxury"] {
+  --preset-mode: luxury;
   --font-sans: "DM Sans", Inter, sans-serif;
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-serif: "Cormorant Garamond", serif;
@@ -21,6 +23,10 @@
   letter-spacing: 0.28em;
   font-size: 0.68rem;
   color: var(--color-accent);
+  border-top: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  padding: 6px 0;
+  display: inline-block;
 }
 
 [data-preset="luxury"] .button-primary {
@@ -35,8 +41,28 @@
 [data-preset="luxury"] .catalog-card {
   border-width: 1px;
   border-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, black 6%, transparent);
 }
 
 [data-preset="luxury"] .visual-placeholder {
   border-color: var(--color-accent);
+}
+
+[data-preset="luxury"] .benefits-grid li {
+  border: 1px solid color-mix(in srgb, var(--color-accent) 22%, transparent);
+  box-shadow: none;
+}
+
+[data-preset="luxury"] .contact-section {
+  background: var(--color-ink);
+  border-top: 2px solid var(--color-accent);
+  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+[data-preset="luxury"] .floating-contact {
+  border-radius: 0;
+  background: var(--color-ink);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  box-shadow: none;
 }

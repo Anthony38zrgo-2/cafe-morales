@@ -1,7 +1,9 @@
 /**
- * PRESET HANDMADE — artesanal, serif hecho a mano
+ * PRESET HANDMADE — artesanal: serif italic, rotaciones leves, textura suave
+ * Firma: tilt de tarjetas/visuales, eyebrow italic, bordes irregulares
  */
 [data-preset="handmade"] {
+  --preset-mode: handmade;
   --font-sans: "Plus Jakarta Sans", Inter, sans-serif;
   --font-display: "Instrument Serif", Georgia, serif;
   --font-accent: Fraunces, serif;
@@ -16,11 +18,19 @@
   font-weight: 400;
 }
 
+[data-preset="handmade"] .eyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  letter-spacing: 0.08em;
+  border-bottom: 2px dashed color-mix(in srgb, var(--color-brand) 40%, transparent);
+  padding-bottom: 4px;
+}
+
 [data-preset="handmade"] .visual-placeholder {
   border-width: 1.5px;
   border-style: solid;
   border-color: color-mix(in srgb, var(--color-brand) 25%, transparent);
-  transform: rotate(0.2deg);
+  transform: rotate(0.4deg);
 }
 
 [data-preset="handmade"] .catalog-card {
@@ -28,9 +38,26 @@
   border-color: color-mix(in srgb, var(--color-ink) 6%, transparent);
   transform: rotate(-0.15deg);
 }
+[data-preset="handmade"] .catalog-card:nth-child(even) {
+  transform: rotate(0.25deg);
+}
 
-[data-preset="handmade"] .eyebrow {
-  font-family: var(--font-accent);
-  font-style: italic;
-  letter-spacing: 0.08em;
+[data-preset="handmade"] .benefits-grid li {
+  border: 1.5px solid color-mix(in srgb, var(--color-brand) 15%, transparent);
+  transform: rotate(0.2deg);
+}
+
+[data-preset="handmade"] .contact-section {
+  background: var(--color-surface-alt);
+  color: var(--color-ink);
+  border: 1.5px solid color-mix(in srgb, var(--color-brand) 20%, transparent);
+  border-radius: 2rem 1.25rem 2rem 1.5rem;
+}
+[data-preset="handmade"] .contact-section .eyebrow { color: var(--color-brand); }
+[data-preset="handmade"] .contact-section p { color: var(--color-muted); }
+[data-preset="handmade"] .contact-section small { color: var(--color-muted); }
+
+[data-preset="handmade"] .floating-contact {
+  transform: rotate(-3deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }

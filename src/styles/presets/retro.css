@@ -1,7 +1,9 @@
 /**
- * PRESET RETRO — 70s warm, sellos
+ * PRESET RETRO — 70s warm: Instrument Serif, sellos, rotaciones
+ * Firma: tilt de cards y visual, eyebrow sello accent, franjas cálidas
  */
 [data-preset="retro"] {
+  --preset-mode: stamp;
   --font-sans: "DM Sans", Inter, sans-serif;
   --font-display: "Instrument Serif", Georgia, serif;
   --radius-card: 1.25rem;
@@ -22,6 +24,7 @@
   border-radius: 9999px;
   display: inline-block;
   letter-spacing: 0.14em;
+  transform: rotate(-1deg);
 }
 
 [data-preset="retro"] .visual-placeholder {
@@ -33,7 +36,25 @@
 [data-preset="retro"] .catalog-card {
   transform: rotate(-0.2deg);
   border-width: 1.5px;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--color-ink) 10%, transparent);
 }
 [data-preset="retro"] .catalog-card:nth-child(even) {
   transform: rotate(0.3deg);
+}
+
+[data-preset="retro"] .benefits-grid li {
+  border: 1.5px solid color-mix(in srgb, var(--color-brand) 25%, transparent);
+  transform: rotate(0.3deg);
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--color-ink) 8%, transparent);
+}
+
+[data-preset="retro"] .contact-section {
+  background:
+    repeating-linear-gradient(90deg, var(--color-brand) 0 40px, var(--color-brand-dark) 40px 80px);
+  border-top: 6px solid var(--color-accent);
+}
+
+[data-preset="retro"] .floating-contact {
+  transform: rotate(4deg);
+  border: 2px solid color-mix(in srgb, var(--color-brand) 50%, transparent);
 }

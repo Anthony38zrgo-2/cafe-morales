@@ -1,7 +1,9 @@
 /**
- * PRESET INK — tinta, serif + mono alto contraste
+ * PRESET INK — tinta: serif + mono, alto contraste, filetes finos
+ * Firma: título con barra accent a la izquierda, eyebrow subrayado, bordes ink
  */
 [data-preset="ink"] {
+  --preset-mode: ink;
   --font-sans: "Cormorant Garamond", Georgia, serif;
   --font-display: "JetBrains Mono", monospace;
   --font-mono: "JetBrains Mono", monospace;
@@ -32,9 +34,34 @@
   border-width: 1.5px;
   border-color: var(--color-ink);
   border-radius: var(--radius-card);
+  box-shadow: none;
 }
 
 [data-preset="ink"] .visual-placeholder {
   border: 1.5px solid var(--color-ink);
+  border-radius: var(--radius-visual);
   background: var(--color-surface-alt);
+}
+
+[data-preset="ink"] .benefits-grid li {
+  border: 1.5px solid var(--color-ink);
+  border-left: 4px solid var(--color-accent);
+  box-shadow: none;
+  border-radius: var(--radius-card);
+}
+
+[data-preset="ink"] .contact-section {
+  background: var(--color-ink);
+  border-top: 2px solid var(--color-accent);
+}
+
+[data-preset="ink"] .contact-section .eyebrow {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+[data-preset="ink"] .floating-contact {
+  border-radius: var(--radius-button);
+  border: 1.5px solid var(--color-ink);
+  box-shadow: none;
 }

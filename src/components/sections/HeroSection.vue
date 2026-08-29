@@ -8,6 +8,7 @@ import { siteConfig } from "@/config/site.config";
 import { isConfiguredLinkAvailable } from "@/config/sections";
 import MediaVisual from "@/components/ui/MediaVisual.vue";
 import UiButton from "@/components/ui/UiButton.vue";
+import Hero3D from "@/components/sections/Hero3D.vue";
 
 const props = defineProps({
   eyebrow: { type: String, default: "" },
@@ -22,6 +23,7 @@ const props = defineProps({
 const visibleActions = computed(() =>
   (props.actions || []).filter((a) => isConfiguredLinkAvailable(a.href, siteConfig)),
 );
+const isModel = computed(() => props.visual?.type === "model");
 </script>
 
 <template>
@@ -62,8 +64,15 @@ const visibleActions = computed(() =>
         </div>
       </div>
 
+      <Hero3D
+        v-if="visual && isModel"
+        :visual="visual"
+        :label="title"
+        class="w-full"
+      />
+
       <MediaVisual
-        v-if="visual"
+        v-else-if="visual"
         :visual="visual"
         :label="title"
         class="w-full"

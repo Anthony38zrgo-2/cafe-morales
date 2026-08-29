@@ -1,0 +1,11 @@
+{
+  "preset": "clay",
+  "palette": "amber",
+  "nota": "Ejemplo del proyecto — combo curado ámbar × clay: extruido suave y cálido, ideal café.",
+  "siteConfigOverride": {
+    "theme": { "preset": "clay", "palette": "amber" },
+    "site": {
+      "brand": { "name": "Finca El Alto", "shortName": "FEA", "tagline": "Café de altura — Cajamarca 1.800 msnm" }
+    }
+  }
+}

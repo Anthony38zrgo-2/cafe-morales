@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run",
-    "check": "npm run lint && npm run test && npm run build",
+    "check": "npm run lint && npm run test && node scripts/validate-config.mjs && node scripts/check-presets.mjs && npm run build",
     "predeploy": "npm run build:github",
     "deploy": "gh-pages -d dist"
   },
@@ -19,6 +19,7 @@
     "@iconify/vue": "^5.0.1",
     "@tailwindcss/vite": "^4.3.2",
     "tailwindcss": "^4.3.2",
+    "three": "^0.185.1",
     "vue": "^3.5.39"
   },
   "devDependencies": {

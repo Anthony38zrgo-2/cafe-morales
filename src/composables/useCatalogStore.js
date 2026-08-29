@@ -17,14 +17,34 @@ function clone(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
+/** True si `json` parece ser un catálogo válido (array con items con id/name/visual). */
+export function isValidCatalog(json) {
+  if (!Array.isArray(json) || !json.length) return false;
+  return json.every(
+    (it) => it && typeof it === "object" && typeof it.id === "string" && typeof it.name === "string" && it.visual && typeof it.visual === "object",
+  );
+}
+
 function ensureIds(items) {
   return items.map((it, idx) => ({
     id: it.id || `item-${idx}`,
     name: it.name || "",
     category: it.category || "General",
+    gama: it.gama || "clasico",
+    partnerId: it.partnerId || "valqui",
     description: it.description || "",
     price: it.price || "",
     badge: it.badge || "",
+    flags: Array.isArray(it.flags) ? it.flags : [],
+    presentations:
+      Array.isArray(it.presentations) && it.presentations.length
+        ? it.presentations.map((p) => ({
+            unit: p.unit || "",
+            price: p.price ?? 0,
+            image: p.image || "",
+            ...p,
+          }))
+        : [{ unit: "250 g", price: 0, image: "" }],
     visual: it.visual || { type: "svg", name: "generic", aspect: "4 / 3", alt: "" },
     ...it,
   }));
@@ -76,10 +96,16 @@ export function useCatalogStore() {
         handleName.value = h.name || "";
         try {
           const live = await readJSON(h);
-          if (Array.isArray(live) && live.length) {
+          if (isValidCatalog(live)) {
             const normalized = ensureIds(live);
             state.splice(0, state.length, ...normalized);
             storageSet(STORAGE_KEY, clone(normalized));
+          } else {
+            console.warn("[dev] Archivo live de catálogo inválido, se descarta el handle:", live);
+            fileHandle = null;
+            hasHandle.value = false;
+            handleName.value = "";
+            await idbDel(HANDLE_KEY);
           }
         } catch (_e) {
           void _e;
@@ -113,9 +139,13 @@ export function useCatalogStore() {
       id,
       name: "NUEVO PRODUCTO",
       category: "Café en grano",
+      gama: "clasico",
+      partnerId: "valqui",
       description: "Descripción del nuevo producto.",
       price: "S/ 0 por kilo",
       badge: "",
+      flags: [],
+      presentations: [{ unit: "250 g", price: 0, image: "" }],
       visual: { type: "svg", name: "generic", aspect: "4 / 3", alt: "Nuevo producto" },
     });
   }
@@ -171,10 +201,16 @@ export function useCatalogStore() {
       handleName.value = h.name || "";
       await idbSet(HANDLE_KEY, h);
       const live = await readJSON(h);
-      if (Array.isArray(live) && live.length) {
+      if (isValidCatalog(live)) {
         const normalized = ensureIds(live);
         state.splice(0, state.length, ...normalized);
         storageSet(STORAGE_KEY, clone(normalized));
+      } else {
+        console.warn("[dev] Archivo seleccionado no es un catálogo válido; no se aplica:", live);
+        fileHandle = null;
+        hasHandle.value = false;
+        handleName.value = "";
+        await idbDel(HANDLE_KEY);
       }
     } catch (_e) {
       if (_e?.name !== "AbortError") alert("No se pudo abrir: " + _e.message);

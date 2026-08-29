@@ -1,7 +1,9 @@
 /**
- * PRESET PAPER — papel crema, editorial sutil
+ * PRESET PAPER — papel: líneas de cuaderno, radios mínimos, sombra 2px
+ * Firma: fondo rayado, card con sombra offset 2px, floating cuadrado
  */
 [data-preset="paper"] {
+  --preset-mode: papery;
   --font-sans: "DM Sans", Inter, sans-serif;
   --font-display: Fraunces, Georgia, serif;
   --radius-card: 0.25rem;
@@ -31,4 +33,28 @@
 [data-preset="paper"] .visual-placeholder {
   border-style: solid;
   background: color-mix(in srgb, var(--color-surface) 80%, white);
+}
+
+[data-preset="paper"] .benefits-grid li {
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--color-ink) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+}
+
+[data-preset="paper"] .contact-section {
+  background:
+    linear-gradient(color-mix(in srgb, var(--color-ink) 6%, transparent) 1px, transparent 1px),
+    var(--color-surface-alt);
+  background-size: 100% 28px;
+  color: var(--color-ink);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--color-ink) 8%, transparent);
+}
+[data-preset="paper"] .contact-section .eyebrow { color: var(--color-brand); }
+[data-preset="paper"] .contact-section p { color: var(--color-muted); }
+[data-preset="paper"] .contact-section small { color: var(--color-muted); }
+
+[data-preset="paper"] .floating-contact {
+  border-radius: 0.25rem;
+  box-shadow: 2px 2px 0 var(--color-ink);
+  border: 1px solid var(--color-ink);
 }

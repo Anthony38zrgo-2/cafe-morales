@@ -217,6 +217,32 @@
   .filter-button.active {
     @apply bg-brand text-white border-brand;
   }
+
+  /* Barra de toggle de filtros (ocultos por defecto) */
+  .filters-bar {
+    @apply mb-4 flex justify-end;
+  }
+  .filters-toggle {
+    @apply inline-flex items-center gap-2 rounded-full border border-ink/15 bg-surface px-4 py-2 text-sm font-semibold transition hover:border-brand hover:text-brand;
+  }
+  .filters-toggle.open {
+    @apply border-brand text-brand bg-brand/5;
+  }
+  .filters-toggle.active {
+    @apply border-accent bg-accent/10 text-brand-dark;
+  }
+  .filters-dot {
+    @apply size-2 rounded-full bg-accent;
+  }
+  .filters-panel {
+    @apply mb-6 rounded-2xl border border-ink/10 bg-surface-alt/60 p-4;
+  }
+  .filters-panel .category-filters {
+    @apply mb-3 last:mb-0;
+  }
+  .filters-reset {
+    @apply ml-2 font-bold text-brand underline underline-offset-2;
+  }
   .card-actions {
     @apply mt-4 flex gap-2;
   }
@@ -376,6 +402,110 @@
   .contact-panel-leave-to {
     opacity: 0;
     transform: translateY(8px) scale(0.98);
+  }
+
+  /* Card multi-presentación */
+  .card-meta {
+    @apply mb-4 flex flex-wrap justify-between gap-x-3 gap-y-1 text-[.7rem] font-bold uppercase tracking-wider text-brand;
+  }
+  .card-meta-main {
+    @apply inline-flex items-center gap-2;
+  }
+  .card-meta-partner {
+    @apply font-semibold normal-case tracking-normal text-muted;
+  }
+  .flag-row {
+    @apply flex flex-wrap gap-2;
+  }
+  .flag-chip {
+    @apply rounded-full bg-ink/5 px-2.5 py-1 text-[11px] font-bold text-muted;
+  }
+  .presentation-select {
+    @apply mt-4 flex flex-wrap gap-2;
+  }
+  .presentation-pill {
+    @apply rounded-full border border-ink/15 bg-surface px-4 py-2 text-sm font-bold transition;
+  }
+  .presentation-pill.active {
+    @apply border-brand bg-brand text-white;
+  }
+  .card-price-row {
+    @apply mt-4 flex items-end justify-between gap-3;
+  }
+  .price-from {
+    @apply text-sm font-bold text-brand;
+  }
+  .price-current {
+    @apply text-lg font-bold;
+  }
+
+  /* Gift en OrderModal */
+  .gift-box {
+    @apply mt-4 rounded-xl border border-dashed border-accent/40 bg-accent/5 px-4 py-3;
+  }
+  .gift-box.unlocked {
+    @apply border-accent/60;
+  }
+  .gift-label {
+    @apply flex flex-col gap-1.5 text-sm font-semibold;
+  }
+  .gift-progress-text {
+    @apply text-sm font-semibold;
+  }
+  .gift-progress {
+    @apply mt-2 h-2 overflow-hidden rounded-full bg-ink/10;
+  }
+  .gift-progress-fill {
+    @apply h-full rounded-full bg-accent transition-all;
+  }
+
+  /* Partners */
+  .partners-grid {
+    @apply grid gap-6 md:grid-cols-2;
+  }
+  .partner-card {
+    @apply border border-ink/10 bg-surface p-6 rounded-2xl;
+    border-radius: var(--radius-card);
+  }
+  .partner-card-head h3 {
+    @apply font-display text-2xl font-bold;
+  }
+  .partner-card-head p {
+    @apply text-sm font-semibold text-muted;
+  }
+  .partner-since {
+    @apply mt-1 text-xs font-bold uppercase tracking-wider text-brand;
+  }
+  .partner-story {
+    @apply mt-3 text-sm leading-6 text-muted;
+  }
+  .partner-origins {
+    @apply mt-4 flex flex-wrap gap-2;
+  }
+  .partner-origin-chip {
+    @apply inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold text-brand;
+  }
+  .partner-link {
+    @apply mt-5 inline-flex w-fit px-4 py-2 text-xs;
+  }
+
+  /* Loyalty */
+  .loyalty-note {
+    @apply mx-auto max-w-2xl text-center;
+  }
+  .loyalty-cta {
+    @apply mt-2 flex justify-center;
+  }
+
+  /* Hero 3D */
+  .hero-model-wrap {
+    @apply grid place-items-center;
+  }
+  .hero-model-wrap canvas {
+    @apply absolute inset-0 h-full w-full;
+  }
+  .hero-model-fallback {
+    @apply absolute bottom-3 right-3 rounded-full bg-ink/70 px-3 py-1 text-[11px] font-bold text-white;
   }
 }
 

@@ -2,12 +2,13 @@
 defineProps({
   categories: { type: Array, required: true },
   active: { type: String, required: true },
+  ariaLabel: { type: String, default: "Filtrar por categoría" },
 });
 defineEmits(["select"]);
 </script>
 
 <template>
-  <div class="category-filters" role="group" aria-label="Filtrar por categoría">
+  <div class="category-filters" role="group" :aria-label="ariaLabel">
     <button
       v-for="cat in categories"
       :key="cat"

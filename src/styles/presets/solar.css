@@ -1,7 +1,9 @@
 /**
- * PRESET SOLAR — sol, amarillo y negro gráfico
+ * PRESET SOLAR — sol gráfico: amarillo/negro, hard shadow, pill accent
+ * Firma: eyebrow pill accent, visual con fondo accent + sombra dura 6px
  */
 [data-preset="solar"] {
+  --preset-mode: solar;
   --font-sans: "Manrope", Inter, sans-serif;
   --font-display: "Barlow Condensed", Impact, sans-serif;
   --radius-card: 1rem;
@@ -23,6 +25,7 @@
   border-radius: 9999px;
   letter-spacing: 0.16em;
   font-weight: 800;
+  display: inline-block;
 }
 
 [data-preset="solar"] .visual-placeholder {
@@ -35,10 +38,38 @@
 [data-preset="solar"] .catalog-card {
   border: 2px solid var(--color-ink);
   border-radius: var(--radius-card);
+  box-shadow: 5px 5px 0 var(--color-ink);
 }
 
 [data-preset="solar"] .button-primary {
   background: var(--color-ink);
   color: var(--color-accent);
   border: 2px solid var(--color-ink);
+}
+
+[data-preset="solar"] .benefit-number {
+  background: var(--color-accent);
+  color: var(--color-ink);
+  padding: 2px 8px;
+  font-weight: 800;
+}
+
+[data-preset="solar"] .benefits-grid li {
+  border: 2px solid var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-ink);
+}
+
+[data-preset="solar"] .contact-section {
+  background: var(--color-accent);
+  color: var(--color-ink);
+  border-top: 6px solid var(--color-ink);
+}
+[data-preset="solar"] .contact-section .eyebrow { background: var(--color-ink); color: var(--color-accent); }
+[data-preset="solar"] .contact-section p { color: color-mix(in srgb, var(--color-ink) 80%, transparent); }
+[data-preset="solar"] .contact-section small { color: color-mix(in srgb, var(--color-ink) 70%, transparent); }
+
+[data-preset="solar"] .floating-contact {
+  border-radius: 0.5rem;
+  border: 2px solid var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-ink);
 }

@@ -121,6 +121,24 @@ export function validateConfig(config) {
     }
   }
 
+  // gift
+  if (config.gift) {
+    if (config.gift.enabled != null && typeof config.gift.enabled !== "boolean") {
+      errors.push(err("gift.enabled", "debe ser boolean"));
+    }
+    if (config.gift.threshold != null && (typeof config.gift.threshold !== "number" || !(config.gift.threshold > 0))) {
+      errors.push(err("gift.threshold", "debe ser un número mayor a 0"));
+    }
+    if (config.gift.items != null && !Array.isArray(config.gift.items)) {
+      errors.push(err("gift.items", "debe ser array"));
+    } else if (Array.isArray(config.gift.items)) {
+      config.gift.items.forEach((item, i) => {
+        if (!item.id || typeof item.id !== "string") errors.push(err(`gift.items[${i}].id`, "requerido string"));
+        if (!item.label || typeof item.label !== "string") errors.push(err(`gift.items[${i}].label`, "requerido string"));
+      });
+    }
+  }
+
   return errors;
 }
 

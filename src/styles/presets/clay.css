@@ -1,7 +1,9 @@
 /**
- * PRESET CLAY — barro, terracota, extruido suave
+ * PRESET CLAY — extruido: barro, terracota, sombras suaves 3D
+ * Firma: sombra inferior con luz superior (inset highlight), pill, todo extruido
  */
 [data-preset="clay"] {
+  --preset-mode: extruded;
   --font-sans: "DM Sans", Inter, sans-serif;
   --font-display: Fraunces, Georgia, serif;
   --radius-card: 1.75rem;
@@ -19,6 +21,7 @@
   background: var(--color-surface-alt);
   box-shadow:
     inset 0 2px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -3px 0 color-mix(in srgb, var(--color-ink) 6%, transparent),
     0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -26,7 +29,7 @@
   border: none;
   background: var(--color-surface);
   box-shadow:
-    0 2px 0 rgba(255, 255, 255, 0.8) inset,
+    inset 0 2px 0 rgba(255, 255, 255, 0.8),
     0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
@@ -34,4 +37,29 @@
   box-shadow:
     0 4px 0 color-mix(in srgb, var(--color-brand-dark) 80%, black),
     0 8px 16px rgba(0, 0, 0, 0.12);
+}
+[data-preset="clay"] .button-primary:hover {
+  box-shadow:
+    0 6px 0 color-mix(in srgb, var(--color-brand-dark) 80%, black),
+    0 10px 20px rgba(0, 0, 0, 0.14);
+}
+
+[data-preset="clay"] .benefits-grid li {
+  background: var(--color-surface);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.8),
+    0 6px 14px rgba(0, 0, 0, 0.06);
+  border: none;
+}
+
+[data-preset="clay"] .contact-section {
+  background: linear-gradient(180deg, var(--color-brand) 0%, var(--color-brand-dark) 100%);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-visual) var(--radius-visual) 0 0;
+}
+
+[data-preset="clay"] .floating-contact {
+  box-shadow:
+    0 4px 0 color-mix(in srgb, var(--color-brand-dark) 70%, transparent),
+    0 10px 18px rgba(0, 0, 0, 0.12);
 }

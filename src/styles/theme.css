@@ -34,3 +34,11 @@
   --tracking-display: -0.035em;
   --leading-display: 0.98;
 }
+
+:root {
+  /* Modo de firma del preset — cada preset DEBE declarar su modo en [data-preset="..."].
+   * Modos: flat | aero | extrusion | stamp | blob | glass | air | papery | mono | grid | editorial | luxury | handmade | solar | ink
+   * Uso: orientación/auditoría + componentes que quieran patrones por modo.
+   */
+  --preset-mode: flat;
+}

@@ -1,7 +1,9 @@
 /**
- * PRESET BAUHAUS-PASTEL — geométrico pero pastel suave
+ * PRESET BAUHAUS-PASTEL — geométrico suave: pastel R/Y/B, radios mínimos
+ * Firma: tops pastel en cards, título uppercase con tracking amplio
  */
 [data-preset="bauhaus-pastel"] {
+  --preset-mode: grid;
   --font-sans: "Poppins", Inter, sans-serif;
   --font-display: "Poppins", "Space Grotesk", sans-serif;
   --radius-card: 0.5rem;
@@ -49,4 +51,20 @@
   background: var(--color-ink);
   color: var(--color-surface);
   border: 1.5px solid var(--color-ink);
+}
+
+[data-preset="bauhaus-pastel"] .benefits-grid li {
+  border: 1.5px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  border-top: 4px solid var(--bauhaus-red);
+  box-shadow: none;
+}
+
+[data-preset="bauhaus-pastel"] .contact-section {
+  border-top: 4px solid var(--bauhaus-red);
+}
+
+[data-preset="bauhaus-pastel"] .floating-contact {
+  border-radius: 0.375rem;
+  border: 1.5px solid var(--color-ink);
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--color-ink) 25%, transparent);
 }

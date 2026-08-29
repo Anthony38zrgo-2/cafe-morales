@@ -1,7 +1,9 @@
 /**
- * PRESET CORPORATE — tech confiable, compacto
+ * PRESET CORPORATE — tech confiable: Sora compacto, bordes finos, denso
+ * Firma: densidad compacta, botones compactos, contact en brand sólido
  */
 [data-preset="corporate"] {
+  --preset-mode: flat;
   --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
   --font-display: Sora, Inter, sans-serif;
   --radius-card: 0.75rem;
@@ -22,8 +24,8 @@
 
 [data-preset="corporate"] .visual-placeholder {
   border-style: solid;
-  background: var(--color-surface-alt);
   border-width: 1px;
+  background: var(--color-surface-alt);
 }
 
 [data-preset="corporate"] .catalog-card {
@@ -34,4 +36,25 @@
 [data-preset="corporate"] .button {
   min-height: 2.5rem;
   font-weight: 600;
+}
+
+[data-preset="corporate"] .benefits-grid li {
+  border: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
+  box-shadow: none;
+  padding: 1.25rem;
+}
+
+[data-preset="corporate"] .contact-section {
+  background: var(--color-brand);
+  border-radius: 0;
+}
+
+[data-preset="corporate"] .contact-section .button-light {
+  background: var(--color-ink);
+}
+
+[data-preset="corporate"] .floating-contact {
+  border-radius: 0.75rem;
+  box-shadow: none;
+  border: 1px solid var(--color-brand-dark);
 }

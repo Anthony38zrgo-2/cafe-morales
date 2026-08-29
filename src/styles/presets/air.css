@@ -1,7 +1,9 @@
 /**
- * PRESET AIR — ligero, aéreo, tipografía fina
+ * PRESET AIR — aéreo: ligero, muy espaciado, tipografía fina, sin cajas
+ * Firma: cards sin borde (solo línea inferior), visual transparente, 6rem spacing
  */
 [data-preset="air"] {
+  --preset-mode: air;
   --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
   --font-display: "Cormorant Garamond", Georgia, serif;
   --radius-card: 1rem;
@@ -37,4 +39,29 @@
   background: transparent;
   border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
   border-radius: 0;
+}
+
+[data-preset="air"] .benefits-grid li {
+  border: none;
+  background: transparent;
+  border-left: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+  padding-left: 1.25rem;
+}
+
+[data-preset="air"] .contact-section {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border-top: 1px solid var(--color-ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+}
+[data-preset="air"] .contact-section .eyebrow { color: var(--color-brand); }
+[data-preset="air"] .contact-section p { color: var(--color-muted); }
+[data-preset="air"] .contact-section small { color: var(--color-muted); }
+
+[data-preset="air"] .floating-contact {
+  background: var(--color-ink);
+  color: var(--color-surface);
+  border-radius: 9999px;
+  box-shadow: none;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 20%, transparent);
 }

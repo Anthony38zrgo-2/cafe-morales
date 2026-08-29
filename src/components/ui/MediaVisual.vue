@@ -28,7 +28,8 @@ const resolvedAspect = computed(() => {
 
 const resolvedAlt = computed(() => props.visual?.alt || props.label || "Visual");
 const resolvedSvgName = computed(() => props.visual?.name || "generic");
-const hasImage = computed(() => resolvedType.value === "image" && Boolean(props.imageSrc));
+const resolvedSrc = computed(() => props.imageSrc || props.visual?.src || "");
+const hasImage = computed(() => resolvedType.value === "image" && Boolean(resolvedSrc.value));
 </script>
 
 <template>
@@ -40,7 +41,7 @@ const hasImage = computed(() => resolvedType.value === "image" && Boolean(props.
   >
     <img
       v-if="hasImage"
-      :src="imageSrc"
+      :src="resolvedSrc"
       :alt="resolvedAlt"
       loading="lazy"
       decoding="async"

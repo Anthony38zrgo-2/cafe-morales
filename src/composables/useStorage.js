@@ -36,5 +36,5 @@ export function storageRemove(name) {
 }
 
 export function storageClearDev() {
-  ["siteConfig", "catalog", "sidebar_w", "sidebar_open", "sidebar_tab"].forEach(storageRemove);
+  ["siteConfig", "catalog", "sidebar_w", "sidebar_open", "sidebar_tab", "sidebar_tema_view", "favorite_combo"].forEach(storageRemove);
 }

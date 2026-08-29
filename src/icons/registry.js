@@ -82,6 +82,23 @@ export const ICONS = Object.freeze({
     viewBox: "0 0 24 24",
     path: '<circle cx="12" cy="8" r="6"/><path d="M15.5 12 12 19 8.5 12"/><path d="M8 8a4 4 0 0 0 8 0"/>',
   },
+  gift: {
+    viewBox: "0 0 24 24",
+    path: '<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>',
+  },
+  "map-pin": {
+    viewBox: "0 0 24 24",
+    path: '<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+  },
+  "hand-coins": {
+    viewBox: "0 0 24 24",
+    path: '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01"/><path d="M18 12h.01"/>',
+  },
+  filter: {
+    viewBox: "0 0 24 24",
+    // embudo de filtro
+    path: '<path d="M3 5h18l-7 8v5l-4 2v-7L3 5Z"/>',
+  },
 });
 
 export function getIcon(name) {

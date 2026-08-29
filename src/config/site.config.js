@@ -1,40 +1,40 @@
 import { reactive } from "vue";
 
 /**
- * CENTRO DE CONFIGURACIÓN — CAFÉ MORALES
- * Migrado desde cafe-del-monte, adaptado a plantilla v2.
- * Preset vibrante + paleta earth (prueba de contraste audaz).
- * Simplificado: Card genérica, OrderModal simple, deliveryLocations v2, #catalog.
+ * CENTRO DE CONFIGURACIÓN — MORALES COFFEE MARKET
+ * Coffee market peruano: partners con trayectoria (hoy: Valqui de Café Ventura S.A.C.),
+ * precio justo, información clara de origen y perfil.
+ * Default del proyecto: preset `clay` + paleta `amber` (combo curado más funcional para café).
  * En DEV es reactive para que DevSidebar (localStorage) haga live preview.
  */
 const rawConfig = {
   site: {
     brand: {
-      name: "Café Morales",
-      shortName: "CM",
-      tagline: "La esencia del café de altura",
+      name: "Morales Coffee Market",
+      shortName: "MCM",
+      tagline: "Café calidad-precio para cada gusto",
       description:
-        "Cultivado en las alturas de Jaén y seleccionado para ofrecer una taza dulce, aromática y balanceada. Productores de nuestras propias variedades.",
+        "Coffee market peruano. Traemos cafés de productores y tostadores con trayectoria (hoy: Valqui de Café Ventura S.A.C.) a precios justos, con información clara de origen y perfil.",
     },
     seo: {
-      title: "Café Morales | Café de especialidad peruano",
+      title: "Morales Coffee Market | Café calidad-precio para cada gusto",
       description:
-        "Café peruano de especialidad de Jaén, Cajamarca. Catimor, Geisha con Catimor, Geisha y Java. Envíos a todo el Perú.",
-      themeColor: "#4a1a2f",
+        "Café peruano por mayor y al detalle: Valqui Clásico 250g/500g/1kg. Regalos a partir de S/ 25 y beneficios para compradores recurrentes. Envíos a todo el Perú.",
+      themeColor: "#d97706",
     },
     contact: {
       phone: "51987755593",
       phoneDisplay: "987 755 593",
       email: "",
       address: "Almacén en Lima · Envíos a todo el Perú",
-      whatsappDefaultMessage: "Hola, quisiera hacer un pedido de Café Morales.",
+      whatsappDefaultMessage: "Hola, quisiera hacer un pedido de Morales Coffee Market.",
     },
   },
 
   theme: {
-    preset: "vibrante",
-    palette: "wine",
-    typography: "display-heavy",
+    preset: "clay",
+    palette: "amber",
+    typography: "elegant",
     radius: "xl",
   },
 
@@ -45,10 +45,21 @@ const rawConfig = {
 
   navigation: [
     { label: "Catálogo", href: "#catalog", section: "catalog" },
+    { label: "Partners", href: "#partners", section: "partners" },
+    { label: "Club Amigos", href: "#loyalty", section: "loyalty" },
     { label: "Nosotros", href: "#about", section: "about" },
-    { label: "Proceso", href: "#benefits", section: "benefits" },
     { label: "Contacto", href: "#contact", section: "contact" },
   ],
+
+  gift: {
+    enabled: true,
+    threshold: 25,
+    items: [
+      { id: "pulsera", label: "Pulsera de café" },
+      { id: "collar", label: "Collar de café" },
+      { id: "sticker", label: "Sticker de café" },
+    ],
+  },
 
   sections: [
     {
@@ -64,21 +75,22 @@ const rawConfig = {
       order: 10,
       variant: "split",
       props: {
-        eyebrow: "Café de especialidad de Jaén, Cajamarca",
-        title: "El carácter de Jaén en cada taza",
+        eyebrow: "Morales Coffee Market · Perú",
+        title: "Café calidad-precio para cada gusto",
         description:
-          "Cultivado en las alturas de Jaén y seleccionado para ofrecer una taza dulce, aromática y balanceada. Altura 1500–2000 msnm, procesos Natural, Lavado y Honey.",
+          "Traemos a tu hogar el café de tostadores peruanos con trayectoria —hoy Valqui Clásico— a precio justo y con la información que necesitas para elegir bien.",
         actions: [
-          { label: "Descubrir variedades", href: "#catalog", variant: "primary" },
+          { label: "Ver catálogo", href: "#catalog", variant: "primary" },
           { label: "Pedir por WhatsApp", href: "#contact", variant: "secondary" },
         ],
         visual: {
-          type: "svg",
-          name: "hero-coffee",
+          type: "model",
+          src: "taza-cafe",
+          poster: "hero-coffee",
           aspect: "4 / 3",
-          alt: "Ilustración café de altura Jaén",
+          alt: "Taza de café 3D",
         },
-        highlights: ["1500–2000 msnm", "Natural · Lavado · Honey", "Tueste artesanal"],
+        highlights: ["+ S/ 25 = regalo accesorio", "Regiones: Jaén · Chanchamayo · Cusco", "Envíos a todo el Perú"],
       },
     },
     {
@@ -87,62 +99,110 @@ const rawConfig = {
       order: 20,
       variant: "grid",
       props: {
-        eyebrow: "Nuestra cosecha",
-        title: "Cafés con perfiles para cada paladar",
+        eyebrow: "El catálogo del momento",
+        title: "Un mercado para cada bolsillo",
         description:
-          "Desde cafés dulces y cremosos hasta perfiles más aromáticos y frutales, elige el que mejor se adapte a tu gusto.",
-        emptyMessage: "Pronto nuevas cosechas.",
-        columns: { base: 1, md: 2, lg: 2 },
+          "Cafés cuidadosamente seleccionados de tostadores peruanos con trayectoria. Elige tu gama y presentación, con información clara de origen.",
+        emptyMessage: "Pronto nuevos cafés.",
+        columns: { base: 1, md: 2, lg: 3 },
         cardVariant: "elevated",
         showFilters: true,
       },
     },
     {
-      id: "about",
+      id: "partners",
       enabled: true,
       order: 30,
+      variant: "grid",
+      props: {
+        eyebrow: "Nuestros partners",
+        title: "Trazabilidad y confianza",
+        description:
+          "Trabajamos con proveedores con trayectoria. Hoy: Valqui, de Café Ventura S.A.C. Cada partner suma más orígenes, variedades y precios al market.",
+      },
+    },
+    {
+      id: "loyalty",
+      enabled: true,
+      order: 40,
+      variant: "grid",
+      props: {
+        eyebrow: "Programa Amigos del Café",
+        title: "Fieles a tu taza, fieles a ti",
+        description:
+          "Queremos que ahorrar café también sea para recurrentes: aquí están nuestros beneficios, incluyendo cafés premium y una esencia del día.",
+        items: [
+          {
+            icon: "gift",
+            title: "Regalo por pedido + S/ 25",
+            description:
+              "Por cada pedido mayor a S/ 25 te acompaña un accesorio: pulseras, collares o stickers de café.",
+          },
+          {
+            icon: "star",
+            title: "Café premium para recurrentes",
+            description:
+              "Los compradores recurrentes reciben cafés especiales: geisha, bourbon y typica.",
+          },
+          {
+            icon: "award",
+            title: "Esencia del día, preparada fresca",
+            description:
+              "Te enviamos una muestra de esencia de café de nuestra gama premium, preparada el mismo día del envío.",
+          },
+        ],
+        note: "El canje se coordina por WhatsApp: cuéntanos tu nombre y detalles, te reconocemos como amigo del café.",
+        ctaLabel: "Soy comprador recurrente",
+        ctaMessage:
+          "Hola, soy cliente recurrente de Morales Coffee Market y quisiera conocer mis beneficios especiales.",
+      },
+    },
+    {
+      id: "about",
+      enabled: true,
+      order: 50,
       variant: "split-reverse",
       props: {
-        eyebrow: "Nuestro café",
-        title: "Productores de nuestras propias variedades",
+        eyebrow: "El market",
+        title: "De proveedores confiables a tu taza",
         description:
-          "En Café Morales somos productores de nuestras propias variedades de café. Origen Jaén - Cajamarca, altura 1500 a 2000 msnm, procesos Natural, Lavado y Honey, perfil dulce, frutal y floral. Cada decisión en la finca protege la calidad del grano y el carácter de su origen.",
+          "Somos un coffee market: seleccionamos café de tostadores y productores peruanos con trayectoria, ofrecemos precios justos y damos información de origen para que elijas según tu gusto y bolsillo.",
         visual: {
-          type: "svg",
-          name: "about-finca",
+          type: "image",
+          src: "valqui-vendedora",
           aspect: "4 / 5",
-          alt: "Ilustración finca cafetalera",
+          alt: "Nuestro market de café",
         },
       },
     },
     {
       id: "benefits",
-      enabled: true,
-      order: 40,
+      enabled: false,
+      order: 60,
       variant: "numbered",
       props: {
-        eyebrow: "De Jaén a tu taza",
-        title: "Un café cuidado en cada etapa",
+        eyebrow: "Por qué el market",
+        title: "Información clara, precio justo, tu gusto",
         description:
-          "Desde la selección de las cerezas hasta el tueste, cuidamos cada proceso para conservar la dulzura, el aroma y el carácter del café de Jaén.",
+          "Al comprar en un market sabes de quién viene tu café, cuánto cuesta y qué esperar en la taza.",
         items: [
           {
-            title: "Cosecha",
+            title: "Selección con trayectoria",
             description:
-              "Cultivado en las zonas altas de Jaén y recolectado cuando las cerezas alcanzan su punto óptimo de maduración.",
-            icon: "leaf",
-          },
-          {
-            title: "Beneficio",
-            description:
-              "Procesado mediante métodos lavado o honey, con fermentación y secado controlados para perfiles limpios y definidos.",
+              "Cada partner que sumamos tiene años produciendo y tostando café peruano: calidad comprobada.",
             icon: "shield-check",
           },
           {
-            title: "Tueste",
+            title: "Calidad-precio",
             description:
-              "Tostado en lotes para resaltar las características de cada café y lograr una taza dulce, aromática y balanceada.",
-            icon: "award",
+              "Precios de mercado justos, pensados para ti: desde S/ 6.50 una bolsa de 250 g.",
+            icon: "hand-coins",
+          },
+          {
+            title: "Origen e info clara",
+            description:
+              "Región, perfil y presentación de cada café visible en su ficha. Así eliges con confianza.",
+            icon: "map-pin",
           },
         ],
       },
@@ -150,15 +210,15 @@ const rawConfig = {
     {
       id: "contact",
       enabled: true,
-      order: 50,
+      order: 70,
       variant: "centered",
       props: {
         eyebrow: "Haz tu pedido",
-        title: "El verdadero café de especialidad hasta tu hogar",
+        title: "Pide por WhatsApp, envío a todo el Perú",
         description:
-          "Escríbenos por WhatsApp y coordinamos tu pedido. Almacén en Lima · Envíos a todo el Perú.",
-        note: "Atención directa por WhatsApp · Jaén, Cajamarca · Perú",
-        actionLabel: "Escribir al 987 755 593",
+          "Escríbenos y coordinamos pago, envío y tu regalo (pedidos + S/ 25).",
+        note: "Almacén en Lima · Envíos a todo el Perú",
+        actionLabel: "Escribir por WhatsApp",
       },
     },
     {
@@ -168,7 +228,7 @@ const rawConfig = {
       variant: "default",
       props: {
         legal: "Todos los derechos reservados.",
-        location: "Jaén, Cajamarca · Perú",
+        location: "Lima · Envíos a todo el Perú",
       },
     },
     {
@@ -182,15 +242,15 @@ const rawConfig = {
         questions: [
           {
             label: "Quiero hacer un pedido",
-            message: "Hola, quisiera hacer un pedido de Café Morales. ¿Me ayudan a elegir una variedad?",
+            message: "Hola, quisiera hacer un pedido en Morales Coffee Market.",
           },
           {
-            label: "Ver variedades y precios",
-            message: "Hola, quisiera conocer las variedades disponibles, sus presentaciones y precios.",
+            label: "Preguntar por el regalo +S/ 25",
+            message: "Hola, quisiera saber más del regalo por pedidos mayores a S/ 25.",
           },
           {
             label: "Consultar envíos",
-            message: "Hola, quisiera consultar el costo y tiempo de envío de Café Morales a mi ciudad.",
+            message: "Hola, quisiera consultar el costo y tiempo de envío.",
           },
         ],
       },
@@ -199,8 +259,12 @@ const rawConfig = {
 
   order: {
     enabled: true,
-    units: ["250gr", "500gr", "1kilo", "sacos"],
   },
 };
 
-export const siteConfig = import.meta.env.DEV ? reactive(rawConfig) : rawConfig;
+/**
+ * Guard para Node (scripts/*.mjs): import.meta.env es Vite-only.
+ */
+const IS_DEV = typeof import.meta !== "undefined" && import.meta.env?.DEV === true;
+
+export const siteConfig = IS_DEV ? reactive(rawConfig) : rawConfig;

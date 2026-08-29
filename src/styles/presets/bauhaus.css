@@ -1,7 +1,9 @@
 /**
- * PRESET BAUHAUS — geométrico primario, grid, Poppins
+ * PRESET BAUHAUS — geométrico primario: grid 12, radius 0, R/Y/B
+ * Firma: página con cuadrícula, tarjetas con borde ink y tops tricolor
  */
 [data-preset="bauhaus"] {
+  --preset-mode: grid;
   --font-sans: "Poppins", "Space Grotesk", Inter, sans-serif;
   --font-display: "Poppins", "Space Grotesk", Inter, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -106,4 +108,23 @@
   border: 2px solid var(--color-ink);
   background: var(--bauhaus-yellow);
   color: var(--color-ink);
+}
+
+[data-preset="bauhaus"] .benefits-grid li {
+  border: 2.5px solid var(--color-ink);
+  border-radius: 0;
+  box-shadow: 5px 5px 0 var(--color-ink);
+}
+
+[data-preset="bauhaus"] .contact-section {
+  border-top: 6px solid var(--bauhaus-red);
+  box-shadow: inset 0 -6px 0 var(--bauhaus-blue);
+}
+
+[data-preset="bauhaus"] .floating-contact {
+  border-radius: 0;
+  border: 2.5px solid var(--color-ink);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-ink);
 }

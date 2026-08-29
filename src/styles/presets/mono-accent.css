@@ -1,7 +1,9 @@
 /**
- * PRESET MONO-ACCENT — técnico, mono para eyebrow
+ * PRESET MONO-ACCENT — técnico: mono en eyebrow/números, chips ink
+ * Firma: eyebrow chip ink, fuente mono en card, border-bottom 2px en header
  */
 [data-preset="mono-accent"] {
+  --preset-mode: mono;
   --font-sans: Inter, sans-serif;
   --font-display: "JetBrains Mono", monospace;
   --font-mono: "JetBrains Mono", monospace;
@@ -26,14 +28,45 @@
   color: var(--color-surface);
   padding: 3px 8px;
   border-radius: 4px;
+  display: inline-block;
 }
 
 [data-preset="mono-accent"] .catalog-card {
   border-width: 1px;
   border-color: var(--color-ink);
   font-family: var(--font-mono);
+  box-shadow: none;
 }
 
 [data-preset="mono-accent"] .benefit-number {
   font-family: var(--font-mono);
+  color: var(--color-ink);
+  background: var(--color-accent);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+[data-preset="mono-accent"] .benefits-grid li {
+  border: 1px solid var(--color-ink);
+  box-shadow: none;
+}
+
+[data-preset="mono-accent"] .site-header {
+  border-bottom: 2px solid var(--color-ink);
+}
+
+[data-preset="mono-accent"] .contact-section {
+  background: var(--color-ink);
+  border-top: 4px solid var(--color-accent);
+}
+
+[data-preset="mono-accent"] .contact-section .eyebrow {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+[data-preset="mono-accent"] .floating-contact {
+  border-radius: 0;
+  border: 1.5px solid var(--color-ink);
+  box-shadow: none;
 }

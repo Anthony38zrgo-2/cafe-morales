@@ -1,73 +1,67 @@
 # Theming — Presets y Paletas
 
-## Presets (estética)
+## Presets (estética) — 19 consolidados
 
-22 presets en `src/styles/presets/` (2 Bauhaus con Poppins, extremos priorizados):
+`src/config/presets.js` registra 19 presets (22 → 19: `editorial-soft` se fusionó en `editorial`, `neo-brutal` en `brutalist` y `midnight-glass` en `glass` — este último funciona con paletas `*-dark`). Cada preset **debe** declarar su firma en el CSS:
 
-| Preset | Uso | Tipografía | Radio | Rasgo |
-|---|---|---|---|---|
-| `cafetal` | Café / orgánico | sans-display (Fraunces) | xl, 1.5rem | Cálido, dashed placeholders |
-| `minimal` | Negocios generales | sans-display | md, 1rem | Limpio, sin sombras |
-| `vibrante` | Retail / joven | display-heavy (Barlow) | xl | Degradados aero, hover elevado |
-| `editorial` | Revista premium | editorial (Fraunces) | md | Serif editorial, aire |
-| `organic` | Natural blob | organic | 2xl | Blob suave, verde |
-| `brutalist` | Bloques duros | grotesk | sm | Sombra dura 4px, sin radius |
-| `glass` | Cristal blur | corporate | xl | Translúcido, backdrop-blur |
-| `luxury` | Oro burdeos | elegant (Cormorant) | md | Borde oro, premium |
-| `retro` | 70s warm | handmade | xl | Sellos rotados |
-| `corporate` | Tech confiable | corporate | sm | Compacto, Inter Tight |
-| `handmade` | Artesanal | handmade | 2xl | Bordes irregulares |
-| `mono-accent` | Técnico | mono | sm | Mono para eyebrow |
-| `clay` | Barro extruido | organic | 2xl | Sombra suave extruida |
-| `air` | Ligero aéreo | corporate | md | Mucho espacio, fina |
-| `paper` | Papel crema | editorial | sm | Textura papel |
-| `midnight-glass` | Noche cristal | grotesk | xl | Oscuro translúcido |
-| `solar` | Sol gráfico | display-heavy | md | Amarillo/negro |
-| `ink` | Tinta serif+mono | serif-mono | sm | Borde tinta, mono |
-| `editorial-soft` | Soft editorial | editorial | xl | Fraunces soft |
-| `neo-brutal` | Neo brutal | grotesk | sm | Plano, borde duro |
-| `bauhaus` | Bauhaus primario | bauhaus (Poppins) | 0 | Grid 12, 0 radius, primario R/Y/B |
-| `bauhaus-pastel` | Bauhaus pastel | pastel (Poppins) | sm | Pastel geométrico |
+| Preset | Modo (`--preset-mode`) | Firma | Uso |
+|---|---|---|---|
+| `clay` | `extruded` | Extruido 3D suave + pill | Barro, terracota — **default del proyecto con paleta `amber`** |
+| `cafetal` | `organic-dashed` | Dashed + sello eyebrow + Fraunces | Café / orgánico |
+| `organic` | `blob` | Blob y radios generosos | Natural, verde |
+| `handmade` | `handmade` | Rotaciones + italic artesanal | Artesanal |
+| `vibrante` | `aero` | Uppercase + botón aero 3D | Retail joven |
+| `bauhaus` | `grid` | Grid 12 + radius 0 + R/Y/B | Geométrico primario |
+| `bauhaus-pastel` | `grid` | Geo pastel + tops tricolor | Bauhaus suave |
+| `editorial` | `editorial` | Serif italic + bordes finos | Revista premium |
+| `luxury` | `luxury` | Filetes dorados + uppercase | Lujo |
+| `retro` | `stamp` | Sellos + tilt ±0.4deg | 70s warm |
+| `glass` | `glass` | Backdrop-blur + translúcido | SaaS (light o dark) |
+| `brutalist` | `stamp` | Sombra dura 4px + borde 2px | Bloques duros |
+| `solar` | `solar` | Pill accent + shadow 6px | Sol gráfico |
+| `paper` | `papery` | Líneas de cuaderno + sombra 2px | Papel crema |
+| `ink` | `ink` | Barra accent + mono en títulos | Tinta serif+mono |
+| `mono-accent` | `mono` | Chips monos + mono tags | Técnico |
+| `minimal` | `flat` | Cero sombras + 1px + compacto | Negocios generales |
+| `corporate` | `flat` | Sora compacto + brand sólido | Tech confiable |
+| `air` | `air` | Sin cajas + línea inferior + 6rem | Ligero aéreo |
 
-Cambiar: `siteConfig.theme.preset = "bauhaus"` → aplica `data-preset` en `<html>`; extremos priorizados (0 radius, 2.5-6px ink, grid).
+**Regla de firma** (`scripts/check-presets.mjs`, incluido en `npm run check`): todo preset declara `--preset-mode` (token de firma), `--font-display`, al menos un `--radius-*` y cubre ≥4 puntos de firma (`.display-title`, `.eyebrow`, `.button`, `.catalog-card`, `.visual-placeholder`, `.site-header`, `.contact-section`, `.benefits*`, `.floating-contact`, `.hero-section`, `.section-muted`, `.benefit*`). Así se evitan variantes indistinguibles: si un preset no toca esas secciones (before: contact/footer/benefits fijos para todos), los ajustes que antes eran invisibles ahora sí diferencian la página.
+
+Cambiar: `siteConfig.theme.preset = "clay"` → aplica `data-preset` en `<html>`.
 
 Crear nuevo preset:
-1. Crea `src/styles/presets/mi-preset.css` con `[data-preset="mi-preset"] { --font-..., --radius-... }` y overrides de `.button`, `.card`, etc.
+1. Crea `src/styles/presets/mi-preset.css` con `[data-preset="mi-preset"]` declarando `--preset-mode`, font y radios + overrides de firma.
 2. Importa en `src/styles/main.css`.
-3. Añade a `src/config/presets.js` `PRESETS` y `PRESET_META`.
-4. Valida con `node scripts/validate-config.mjs`.
+3. Añade a `src/config/presets.js` `PRESETS` y `PRESET_META` (con `signature` y `family`).
+4. Valida: `node scripts/check-presets.mjs` + `npm run check`.
 
-## Paletas (color)
+## Paletas (color) — 75 curadas + custom
 
-75 curadas (30 light + 30 `*-dark` + 15 `*-pastel`) + `custom` (76 total) en `src/styles/palettes/` — equilibrio pastel/dark:
+30 light + 30 `*-dark` + 15 `*-pastel` + `custom` en `src/styles/palettes/`. Cada archivo define `[data-palette="id"] { --color-ink/muted/surface/surfaceAlt/brand/brandDark/accent }`.
 
-Light: `forest` (default), `denim-orange`, `earth`, `ocean`, `sunset`, `graphite`, `wine`, `midnight`, `sand`, `sage`, `terracotta`, `mustard`, `plum`, `teal`, `coral`, `slate`, `amber`, `olive`, `berry`, `sky`, `mint`, `lavender`, `charcoal`, `sandstone`, `clay`, `moss`, `dusk`, `pepper`, `honey`, `indigo`.
+- **Curada**: `theme.palette = "amber"`
+- **Custom**: `theme.palette = "custom"` + `theme.colors` hex (inyecta vars vía `useTheme`)
 
-Dark: `forest-dark`…`indigo-dark` (30) — superficies oscuras, `brand/accent` aclarados para AA.
-
-Pastel: `sage-pastel`, `mint-pastel`, `lavender-pastel`, `sky-pastel`, `peach-pastel`, `butter-pastel`, `rose-pastel`, `clay-pastel`, `sand-pastel`, `dusk-pastel`, `teal-pastel`, `moss-pastel`, `slate-pastel`, `indigo-pastel`, `strawberry-pastel` — desaturadas `L70-80`, équilibre con dark.
-
-Catalog `variant` ahora: `grid|list|carousel|masonry` (`carousel` scroll-snap + nav, `masonry` CSS columns). Lazy-load solo en dev (`src/composables/useLazyTheme.js` + `import.meta.glob` → `loadPalette/loadPreset` en `useTheme.js` si `DEV`).
-
-Cada archivo define `[data-palette="id"] { --color-ink/muted/surface/surfaceAlt/brand/brandDark/accent }`.
-
-- **Curada**: `theme.palette = "sage"`
-- **Custom**: `theme.palette = "custom"` + `theme.colors = {ink,muted,surface,surfaceAlt,brand,brandDark,accent}` hex. También ajusta `site.seo.themeColor` si quieres.
-
-Custom inyecta `style` inline vía `useTheme` — no necesitas crear CSS. Para paleta curada nueva:
+Para paleta curada nueva:
 1. Crea `src/styles/palettes/mi-paleta.css`.
 2. Importa en `main.css`.
 3. Añade a `src/config/palettes.js` `PALETTES` y `PALETTE_DEFINITIONS`.
 
-Tokens usados por todos los componentes: `bg-brand`, `text-muted`, `bg-surface`, etc. Nunca hardcodees hex en Vue.
+## Combos curados (proyecto)
 
-## Tipografía y radius
+`CURATED_COMBOS` en `src/config/presets.js` — pares preset × paleta recomendados con 1 clic desde el DevSidebar (`Ámbar × Clay` es el del proyecto). `examples/*.json` documenta otros.
 
-`theme.typography`: `sans-display|display-heavy|elegant|mono|editorial|grotesk|serif-mono|handmade|corporate|organic|bauhaus|pastel` (12, cada setea `--font-sans/display/serif/mono/accent` vía `useTheme.js`)
-`theme.radius`: `sm|md|xl|2xl|full` — mapea a `--radius-card/button/visual` (presets pueden sobreescribir).
+## Modo de edición DEV (DevSidebar — Ctrl+Shift+D)
 
-Fonts: 20 familias variables vía Google CDN (`Inter, Manrope, Barlow Condensed, Fraunces, Cormorant Garamond, DM Sans, Plus Jakarta Sans, Space Grotesk, Sora, Outfit, JetBrains Mono, Instrument Serif` + `Poppins, Bricolage Grotesque, Syne, Archivo, Quicksand, Comfortaa, Baloo 2, Nunito` — Poppins priorizado para Bauhaus) con `preconnect` + `display=swap` + `vite-plugin-webfont-dl` descarga `woff2` a `dist/assets` en build (offline, 80 `woff2`).
+- **Galería visual**: mini-previews en vivo (la firma de cada preset aplica sobre la maqueta) de presets y paletas; filtros por familia (`warm/bold/editorial/clean/tech/natural/geometric/dark-friendly`) y búsqueda.
+- **Combos curados** + **favorito del proyecto** (☆, persistido en `dev:favorite_combo`).
+- **A/B compare** (tecla `C`): foto del tema vs actual para comparar cara a cara.
+- **Atajos**: `↑/↓` preset · `Shift+↑/↓` paleta · `Ctrl+Z`/`Ctrl+Y` undo/redo (máx 50 pasos en memoria) · `Ctrl+Shift+D` toggle.
+- **Props editor**: formulario schema-driven (`SECTION_PROPS_SCHEMA` en `src/config/sections.js`) en vez de JSON crudo; modo "JSON" disponible como avanzado.
+- **Localizar** (⌖): scroll + flash de la sección editada en la página (`data-dev-section` + outline accent).
+- **Diffs vs base**: badge con nº de campos cambiados respecto a `src/config/site.config.js`.
 
 ## Probar
 
-`examples/*.json` muestra configuraciones. En dev, cambia `site.config.js` o usa DevSidebar (`Ctrl+Shift+D`) — `useTheme` aplica al instante.
+`npm run dev` → DevSidebar (`Ctrl+Shift+D`). `npm run check` valida config + firmas de preset + lint + test + build.

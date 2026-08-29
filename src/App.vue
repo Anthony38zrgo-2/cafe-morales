@@ -21,8 +21,14 @@ if (isDev) {
     console.warn("Configuración inválida:\n - " + errors.join("\n - "));
   }
   // Hidrata siteConfig y catálogo desde localStorage (reactive en DEV)
-  useDevConfig();
+  const devConfig = useDevConfig();
   useCatalogStore();
+  // Backstop: si tras hidratar el config quedó inválido (p.ej. archivo live corrupto),
+  // restaurar desde base para no pintar la página en blanco.
+  if (!devConfig.isValid()) {
+    console.warn("[dev] siteConfig inválido tras hidratar; restaurando config base.");
+    devConfig.reset();
+  }
 }
 
 // Tema (siteConfig es reactive en DEV, watchEffect re-aplica)

@@ -1,7 +1,9 @@
 /**
- * PRESET ORGANIC — suave, natural, blob
+ * PRESET ORGANIC — blob: natural, redondeado, verde
+ * Firma: blob en visual, radios generosos, contact en superficie clara
  */
 [data-preset="organic"] {
+  --preset-mode: blob;
   --font-sans: "Plus Jakarta Sans", Inter, sans-serif;
   --font-display: Fraunces, Georgia, serif;
   --radius-card: 1.75rem;
@@ -16,18 +18,41 @@
 }
 
 [data-preset="organic"] .visual-placeholder {
-  border-width: 1.5px;
-  border-color: color-mix(in srgb, var(--color-brand) 20%, transparent);
+  border: none;
   border-radius: var(--radius-visual);
+  background:
+    radial-gradient(70% 70% at 70% 20%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 70%),
+    color-mix(in srgb, var(--color-surface-alt) 80%, var(--color-surface));
 }
 
 [data-preset="organic"] .catalog-card {
-  border-width: 1.5px;
-  border-color: color-mix(in srgb, var(--color-brand) 10%, var(--color-surface-alt));
+  border: 1.5px solid color-mix(in srgb, var(--color-brand) 10%, var(--color-surface-alt));
   border-radius: var(--radius-card);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--color-brand) 8%, transparent);
 }
 
-[data-preset="organic"] .section-space {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+[data-preset="organic"] .benefit-icon {
+  border-radius: 44% 56% 58% 42% / 48% 44% 56% 52%;
+  background: color-mix(in srgb, var(--color-brand) 12%, var(--color-surface));
+  border: 1.5px solid color-mix(in srgb, var(--color-brand) 22%, transparent);
+}
+
+[data-preset="organic"] .benefits-grid li {
+  border-radius: calc(var(--radius-card) + 0.5rem);
+  border: 1.5px solid color-mix(in srgb, var(--color-brand) 12%, transparent);
+}
+
+[data-preset="organic"] .contact-section {
+  background: var(--color-surface-alt);
+  color: var(--color-ink);
+  border-radius: var(--radius-visual) var(--radius-visual) 0 0;
+  border-top: 5px solid var(--color-brand);
+}
+[data-preset="organic"] .contact-section .eyebrow { color: var(--color-brand); }
+[data-preset="organic"] .contact-section p { color: var(--color-muted); }
+[data-preset="organic"] .contact-section small { color: var(--color-muted); }
+
+[data-preset="organic"] .floating-contact {
+  border-radius: 44% 56% 58% 42% / 48% 44% 56% 52%;
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--color-brand) 25%, transparent);
 }

@@ -6,37 +6,34 @@ import { validateConfig } from "@/config/validate";
 import { PALETTES } from "@/config/palettes";
 import { PRESETS } from "@/config/presets";
 import { getOrderedSections, isSectionEnabled } from "@/config/sections";
-import catalog from "@/data/catalog.json";
-
-describe("config", () => {
+import { isValidSiteConfig } from "@/composables/useDevConfig";
+import { isValidCatalog } from "@/composables/useCatalogStore";
+import catalog from "@/data/catalog.json";describe("config", () => {
   it("valida sin errores", () => {
     expect(validateConfig(siteConfig)).toEqual([]);
   });
 
-  it("expone 22 presets", () => {
+  it("expone 19 presets (22 consolidados por firma)", () => {
     expect(PRESETS).toEqual([
-      "cafetal",
-      "minimal",
-      "vibrante",
-      "editorial",
-      "organic",
-      "brutalist",
-      "glass",
-      "luxury",
-      "retro",
-      "corporate",
-      "handmade",
-      "mono-accent",
       "clay",
-      "air",
-      "paper",
-      "midnight-glass",
-      "solar",
-      "ink",
-      "editorial-soft",
-      "neo-brutal",
+      "cafetal",
+      "organic",
+      "handmade",
+      "vibrante",
       "bauhaus",
       "bauhaus-pastel",
+      "editorial",
+      "luxury",
+      "retro",
+      "glass",
+      "brutalist",
+      "solar",
+      "paper",
+      "ink",
+      "mono-accent",
+      "minimal",
+      "corporate",
+      "air",
     ]);
   });
 
@@ -64,8 +61,26 @@ describe("config", () => {
     for (const item of catalog) {
       expect(item.id).toBeTruthy();
       expect(item.name).toBeTruthy();
+      expect(typeof item.partnerId).toBe("string");
+      expect(["clasico", "premium"]).toContain(item.gama);
+      expect(Array.isArray(item.presentations)).toBe(true);
+      expect(item.presentations.length).toBeGreaterThan(0);
+      for (const p of item.presentations) {
+        expect(p.unit).toBeTruthy();
+        expect(typeof p.price).toBe("number");
+      }
       expect(item.visual).toBeDefined();
       expect(["svg", "image"]).toContain(item.visual.type);
+    }
+  });
+
+  it("gift config válida", () => {
+    expect(typeof siteConfig.gift.threshold).toBe("number");
+    expect(siteConfig.gift.threshold).toBeGreaterThan(0);
+    expect(Array.isArray(siteConfig.gift.items)).toBe(true);
+    for (const item of siteConfig.gift.items) {
+      expect(typeof item.id).toBe("string");
+      expect(typeof item.label).toBe("string");
     }
   });
 });
@@ -107,5 +122,30 @@ describe("validación custom palette", () => {
     };
     const errors = validateConfig(bad);
     expect(errors.some((e) => e.includes("theme.colors.ink"))).toBe(true);
+  });
+});
+
+describe("archivos live corruptos (dev)", () => {
+  it("isValidSiteConfig rechaza array, y objetos sin site/theme/sections", () => {
+    expect(isValidSiteConfig([1, 2, 3])).toBe(false);
+    expect(isValidSiteConfig({ theme: "x" })).toBe(false);
+    expect(isValidSiteConfig({ site: { brand: {} } })).toBe(false);
+    expect(isValidSiteConfig({ site: { brand: {} }, sections: [] })).toBe(false); // sin theme
+    expect(isValidSiteConfig(null)).toBe(false);
+  });
+
+  it("isValidSiteConfig acepta el config base", () => {
+    expect(isValidSiteConfig(JSON.parse(JSON.stringify(siteConfig)))).toBe(true);
+  });
+
+  it("isValidCatalog rechaza no-array, vacío e items sin id/name/visual", () => {
+    expect(isValidCatalog({})).toBe(false);
+    expect(isValidCatalog([])).toBe(false);
+    expect(isValidCatalog([{ id: "x" }])).toBe(false);
+    expect(isValidCatalog([{ id: "x", name: "N", visual: null }])).toBe(false);
+  });
+
+  it("isValidCatalog acepta el catálogo base", () => {
+    expect(isValidCatalog(JSON.parse(JSON.stringify(catalog)))).toBe(true);
   });
 });

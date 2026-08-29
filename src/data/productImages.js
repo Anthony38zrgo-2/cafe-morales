@@ -1,11 +1,9 @@
-import catimor from "@/assets/products/catimor.webp";
-import gueishaCatimor from "@/assets/products/gueisha-catimor.webp";
-import geisha from "@/assets/products/geisha.webp";
-import java from "@/assets/products/java.webp";
+import valquiClasico250 from "@/assets/products/valqui-clasico-250.webp";
+import valquiClasico500 from "@/assets/products/valqui-clasico-500.webp";
+import valquiClasico1kg from "@/assets/products/valqui-clasico-1kg.webp";
 
 export const PRODUCT_IMAGES = Object.freeze({
-  catimor,
-  "gueisha-catimor": gueishaCatimor,
-  geisha,
-  java,
+  "valqui-clasico-250": valquiClasico250,
+  "valqui-clasico-500": valquiClasico500,
+  "valqui-clasico-1kg": valquiClasico1kg,
 });

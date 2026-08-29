@@ -1,7 +1,9 @@
 /**
- * PRESET MINIMAL — limpio, profesional, eficiente
+ * PRESET MINIMAL — plano: limpio, sin sombras, 1px, compacto
+ * Firma: cero sombras, bordes finos ink/10, eyebrow con track amplio
  */
 [data-preset="minimal"] {
+  --preset-mode: flat;
   --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
   --font-display: Inter, ui-sans-serif, system-ui, sans-serif;
   --radius-card: 1rem;
@@ -15,6 +17,11 @@
   font-weight: 700;
 }
 
+[data-preset="minimal"] .eyebrow {
+  letter-spacing: 0.24em;
+  font-weight: 700;
+}
+
 [data-preset="minimal"] .section-space {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -22,14 +29,32 @@
 
 [data-preset="minimal"] .visual-placeholder {
   border-style: solid;
+  border-width: 1px;
   background: var(--color-surface-alt);
 }
 
 [data-preset="minimal"] .catalog-card {
   box-shadow: none;
   border-width: 1px;
+  border-color: color-mix(in srgb, var(--color-ink) 12%, transparent);
 }
 
 [data-preset="minimal"] .button {
   min-height: 2.75rem;
+  box-shadow: none;
+}
+
+[data-preset="minimal"] .benefits-grid li {
+  box-shadow: none;
+  border-width: 1px;
+}
+
+[data-preset="minimal"] .contact-section {
+  background: var(--color-ink);
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 30%, transparent);
+}
+
+[data-preset="minimal"] .floating-contact {
+  box-shadow: none;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 20%, transparent);
 }

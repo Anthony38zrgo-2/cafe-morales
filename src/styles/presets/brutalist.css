@@ -1,7 +1,10 @@
 /**
- * PRESET BRUTALIST — bloques, borde duro, sin radius
+ * PRESET BRUTALIST — bloques duros: sombra 4px, borde 2px, sin blanda
+ * Firma: hard shadow, uppercase fuerte, visual con fondo accent
+ * (absorbe el antiguo neo-brutal)
  */
 [data-preset="brutalist"] {
+  --preset-mode: stamp;
   --font-sans: "Space Grotesk", Inter, sans-serif;
   --font-display: "Space Grotesk", Inter, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -32,6 +35,34 @@
   border-radius: var(--radius-card);
 }
 
+[data-preset="brutalist"] .button {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+[data-preset="brutalist"] .visual-placeholder {
+  background: var(--color-accent);
+}
+
 [data-preset="brutalist"] .site-header {
   border-bottom: 3px solid var(--color-ink);
+}
+
+[data-preset="brutalist"] .benefits-grid li {
+  border: 2px solid var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-ink);
+}
+
+[data-preset="brutalist"] .contact-section {
+  background: var(--color-ink);
+  border-top: 4px solid var(--color-ink);
+}
+
+[data-preset="brutalist"] .floating-contact {
+  border-radius: 0;
+  border: 2px solid var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-ink);
+  background: var(--color-accent);
+  color: var(--color-ink);
 }
