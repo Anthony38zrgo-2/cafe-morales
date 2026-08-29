@@ -1,0 +1,1 @@
+var e=`/cafe-morales/assets/coffee_cup_with_plate-U668acoR.glb`;export{e as default};
