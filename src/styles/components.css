@@ -73,6 +73,11 @@
   .brand-mark {
     @apply grid size-11 place-items-center rounded-full bg-brand text-sm text-white;
   }
+  .brand-logo {
+    @apply size-9 shrink-0 object-contain;
+    width: 36px;
+    height: 36px;
+  }
   .site-header nav {
     @apply hidden items-center gap-6 text-sm font-semibold md:flex;
   }
@@ -507,6 +512,50 @@
   .hero-model-fallback {
     @apply absolute bottom-3 right-3 rounded-full bg-ink/70 px-3 py-1 text-[11px] font-bold text-white;
   }
+
+  /* Hero decoración — grano flotante (visible por defecto) */
+  .hero-visual-wrap {
+    @apply relative w-full;
+    border-radius: var(--radius-visual);
+    overflow: visible;
+  }
+  .hero-visual-wrap .hero-visual {
+    @apply relative z-10;
+    background: transparent !important;
+  }
+  .hero-beans {
+    @apply pointer-events-none absolute select-none;
+    object-fit: contain;
+    object-position: center;
+    right: -4%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56%;
+    max-width: 520px;
+    height: auto;
+    aspect-ratio: 1;
+    opacity: 0.96;
+    z-index: 3;
+  }
+  .hero-beans.behind {
+    z-index: 1;
+    opacity: 0.88;
+  }
+  @keyframes beans-drift {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(calc(-50% - 4px)) translateX(1px); }
+  }
+  .hero-beans.motion {
+    animation: beans-drift 8s ease-in-out infinite;
+  }
+  @media (max-width: 639px) {
+    .hero-beans {
+      width: 68%;
+      right: -8%;
+      top: 56%;
+      opacity: 0.9;
+    }
+  }
 }
 
 @media (max-width: 639px) {
@@ -527,5 +576,10 @@
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .hero-beans.motion {
+    animation: none !important;
   }
 }

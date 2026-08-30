@@ -6,6 +6,7 @@
 import { computed } from "vue";
 import { siteConfig } from "@/config/site.config";
 import { isConfiguredLinkAvailable } from "@/config/sections";
+import { getCoffeeImage } from "@/data/coffeeImages";
 import MediaVisual from "@/components/ui/MediaVisual.vue";
 import UiButton from "@/components/ui/UiButton.vue";
 import Hero3D from "@/components/sections/Hero3D.vue";
@@ -18,12 +19,20 @@ const props = defineProps({
   visual: { type: Object, default: null },
   highlights: { type: Array, default: () => [] },
   variant: { type: String, default: "split" },
+  decoration: { type: Object, default: null },
 });
 
 const visibleActions = computed(() =>
   (props.actions || []).filter((a) => isConfiguredLinkAvailable(a.href, siteConfig)),
 );
 const isModel = computed(() => props.visual?.type === "model");
+const decorationSrc = computed(() => {
+  const key = props.decoration?.src;
+  return key ? getCoffeeImage(key) : "";
+});
+const hasDecoration = computed(() => Boolean(decorationSrc.value));
+const decorationPlacement = computed(() => props.decoration?.placement || "floating");
+const decorationMotion = computed(() => props.decoration?.motion !== false);
 </script>
 
 <template>
@@ -64,19 +73,34 @@ const isModel = computed(() => props.visual?.type === "model");
         </div>
       </div>
 
-      <Hero3D
-        v-if="visual && isModel"
-        :visual="visual"
-        :label="title"
-        class="w-full"
-      />
+      <div v-if="visual" class="hero-visual-wrap">
+        <Hero3D
+          v-if="isModel"
+          :visual="visual"
+          :label="title"
+          class="hero-visual w-full"
+        />
 
-      <MediaVisual
-        v-else-if="visual"
-        :visual="visual"
-        :label="title"
-        class="w-full"
-      />
+        <MediaVisual
+          v-else
+          :visual="visual"
+          :label="title"
+          class="hero-visual w-full"
+        />
+
+        <img
+          v-if="hasDecoration"
+          :src="decorationSrc"
+          alt=""
+          aria-hidden="true"
+          width="520"
+          height="520"
+          loading="eager"
+          decoding="async"
+          class="hero-beans"
+          :class="[decorationPlacement, { motion: decorationMotion }]"
+        />
+      </div>
     </div>
   </section>
 </template>

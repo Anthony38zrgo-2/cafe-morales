@@ -91,6 +91,7 @@ const rawConfig = {
           alt: "Taza de café 3D",
         },
         highlights: ["+ S/ 25 = regalo accesorio", "Regiones: Jaén · Chanchamayo · Cusco", "Envíos a todo el Perú"],
+        decoration: { src: "beans-floating", placement: "floating", motion: true },
       },
     },
     {

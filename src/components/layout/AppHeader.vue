@@ -6,6 +6,7 @@
 import { computed } from "vue";
 import { siteConfig } from "@/config/site.config";
 import { getFirstContentHref } from "@/config/sections";
+import { getCoffeeImage } from "@/data/coffeeImages";
 import SvgIcon from "@/components/ui/SvgIcon.vue";
 
 defineProps({
@@ -14,13 +15,25 @@ defineProps({
 });
 
 const homeHref = computed(() => getFirstContentHref(siteConfig));
+const brandLogoSrc = computed(() => getCoffeeImage("bean-single"));
 </script>
 
 <template>
   <header class="site-header">
     <div class="page-container header-inner">
       <a class="brand" :href="homeHref" :aria-label="`Ir al inicio de ${brand.name}`">
-        <span class="brand-mark" aria-hidden="true">{{ brand.shortName }}</span>
+        <img
+          v-if="brandLogoSrc"
+          :src="brandLogoSrc"
+          alt=""
+          aria-hidden="true"
+          width="36"
+          height="36"
+          class="brand-logo"
+          loading="eager"
+          decoding="async"
+        />
+        <span v-else class="brand-mark" aria-hidden="true">{{ brand.shortName }}</span>
         <span>{{ brand.name }}</span>
       </a>
       <nav aria-label="Navegación principal">
