@@ -19,15 +19,16 @@ const rawConfig = {
     seo: {
       title: "Morales Coffee Market | Café calidad-precio para cada gusto",
       description:
-        "Café peruano por mayor y al detalle: Valqui Clásico 250g/500g/1kg. Regalos a partir de S/ 25 y beneficios para compradores recurrentes. Envíos a todo el Perú.",
+        "Café peruano por mayor y al detalle: Valqui Clásico 250g/500g/1kg. Con cualquier compra recibe una botellita de 300 ml de esencia premium de café de especialidad. Envíos a todo el Perú.",
       themeColor: "#d97706",
     },
     contact: {
-      phone: "51987755593",
-      phoneDisplay: "987 755 593",
+      phone: "51964163543",
+      phoneDisplay: "964 163 543",
       email: "",
       address: "Almacén en Lima · Envíos a todo el Perú",
-      whatsappDefaultMessage: "Hola, quisiera hacer un pedido de Morales Coffee Market.",
+      whatsappDefaultMessage:
+        "Hola, quisiera hacer un pedido de Morales Coffee Market.",
     },
   },
 
@@ -45,14 +46,18 @@ const rawConfig = {
 
   navigation: [
     { label: "Catálogo", href: "#catalog", section: "catalog" },
-    { label: "Partners", href: "#partners", section: "partners" },
+    {
+      label: "Quiénes producen",
+      href: "#partners",
+      section: "partners",
+    },
     { label: "Club Amigos", href: "#loyalty", section: "loyalty" },
     { label: "Nosotros", href: "#about", section: "about" },
     { label: "Contacto", href: "#contact", section: "contact" },
   ],
 
   gift: {
-    enabled: true,
+    enabled: false,
     threshold: 25,
     items: [
       { id: "pulsera", label: "Pulsera de café" },
@@ -81,7 +86,11 @@ const rawConfig = {
           "Traemos a tu hogar el café de tostadores peruanos con trayectoria —hoy Valqui Clásico— a precio justo y con la información que necesitas para elegir bien.",
         actions: [
           { label: "Ver catálogo", href: "#catalog", variant: "primary" },
-          { label: "Pedir por WhatsApp", href: "#contact", variant: "secondary" },
+          {
+            label: "Pedir por WhatsApp",
+            href: "#contact",
+            variant: "secondary",
+          },
         ],
         visual: {
           type: "model",
@@ -90,8 +99,16 @@ const rawConfig = {
           aspect: "4 / 3",
           alt: "Taza de café 3D",
         },
-        highlights: ["+ S/ 25 = regalo accesorio", "Regiones: Jaén · Chanchamayo · Cusco", "Envíos a todo el Perú"],
-        decoration: { src: "beans-floating", placement: "floating", motion: true },
+        highlights: [
+          "Con cualquier compra: esencia premium de café de especialidad (300 ml)",
+          "Regiones: Jaén · Chanchamayo · Cusco",
+          "Envíos a todo el Perú",
+        ],
+        decoration: {
+          src: "beans-floating",
+          placement: "floating",
+          motion: true,
+        },
       },
     },
     {
@@ -116,15 +133,15 @@ const rawConfig = {
       order: 30,
       variant: "grid",
       props: {
-        eyebrow: "Nuestros partners",
-        title: "Trazabilidad y confianza",
+        eyebrow: "Quiénes producen",
+        title: "Conoce el origen de tu café",
         description:
-          "Trabajamos con proveedores con trayectoria. Hoy: Valqui, de Café Ventura S.A.C. Cada partner suma más orígenes, variedades y precios al market.",
+          "Conoce a los productores y tostadores detrás de cada producto: su trayectoria, regiones de origen y experiencia. Hoy trabajamos con Valqui, de Café Ventura S.A.C.",
       },
     },
     {
       id: "loyalty",
-      enabled: true,
+      enabled: false,
       order: 40,
       variant: "grid",
       props: {
@@ -164,10 +181,10 @@ const rawConfig = {
       order: 50,
       variant: "split-reverse",
       props: {
-        eyebrow: "El market",
-        title: "De proveedores confiables a tu taza",
+        eyebrow: "Nuestra forma de elegir",
+        title: "Hacemos más fácil elegir bien",
         description:
-          "Somos un coffee market: seleccionamos café de tostadores y productores peruanos con trayectoria, ofrecemos precios justos y damos información de origen para que elijas según tu gusto y bolsillo.",
+          "Reunimos cafés peruanos confiables, comparamos opciones y te ofrecemos información clara para que encuentres el café adecuado para tu gusto y presupuesto.",
         visual: {
           type: "image",
           src: "valqui-vendedora",
@@ -217,7 +234,7 @@ const rawConfig = {
         eyebrow: "Haz tu pedido",
         title: "Pide por WhatsApp, envío a todo el Perú",
         description:
-          "Escríbenos y coordinamos pago, envío y tu regalo (pedidos + S/ 25).",
+          "Escríbenos y coordinamos pago y envío. Con cualquier compra recibes una botellita de 300 ml de esencia premium de café de especialidad.",
         note: "Almacén en Lima · Envíos a todo el Perú",
         actionLabel: "Escribir por WhatsApp",
       },
@@ -239,15 +256,17 @@ const rawConfig = {
       variant: "panel",
       props: {
         panelTitle: "¿Cómo podemos ayudarte?",
-        panelDescription: "Elige una opción para recibir atención rápida y continuar por WhatsApp.",
+        panelDescription:
+          "Elige una opción para recibir atención rápida y continuar por WhatsApp.",
         questions: [
           {
             label: "Quiero hacer un pedido",
             message: "Hola, quisiera hacer un pedido en Morales Coffee Market.",
           },
           {
-            label: "Preguntar por el regalo +S/ 25",
-            message: "Hola, quisiera saber más del regalo por pedidos mayores a S/ 25.",
+            label: "Preguntar por la esencia de regalo",
+            message:
+              "Hola, quisiera saber más sobre la botellita de 300 ml de esencia premium de café de especialidad incluida con cualquier compra.",
           },
           {
             label: "Consultar envíos",
@@ -266,6 +285,7 @@ const rawConfig = {
 /**
  * Guard para Node (scripts/*.mjs): import.meta.env es Vite-only.
  */
-const IS_DEV = typeof import.meta !== "undefined" && import.meta.env?.DEV === true;
+const IS_DEV =
+  typeof import.meta !== "undefined" && import.meta.env?.DEV === true;
 
 export const siteConfig = IS_DEV ? reactive(rawConfig) : rawConfig;

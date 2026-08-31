@@ -7,6 +7,7 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import { siteConfig } from "@/config/site.config";
 import { createWhatsAppUrl } from "@/composables/useWhatsApp";
 import SvgIcon from "@/components/ui/SvgIcon.vue";
+import coffeeFoam from "@/assets/coffee/coffee-foam.webp";
 
 defineProps({
   panelTitle: { type: String, default: "Conversemos" },
@@ -50,6 +51,7 @@ const defaultWhatsappUrl = createWhatsAppUrl(
       <section
         v-if="panelOpen && variant === 'panel'"
         class="whatsapp-panel"
+        :style="{ '--contact-panel-background': `url(${coffeeFoam})` }"
         role="dialog"
         aria-modal="true"
         aria-label="Contacto por WhatsApp"
