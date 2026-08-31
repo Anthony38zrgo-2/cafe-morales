@@ -44,6 +44,33 @@
     0 10px 20px rgba(0, 0, 0, 0.14);
 }
 
+/* Press: la sombra extrudida se comprime al pulsar */
+[data-preset="clay"] .button:active {
+  transform: translateY(2px);
+}
+[data-preset="clay"] .button-primary:active {
+  box-shadow:
+    0 2px 0 color-mix(in srgb, var(--color-brand-dark) 80%, black),
+    0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover de cards: lift suave con sombra más profunda */
+[data-preset="clay"] .catalog-card:hover {
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.8),
+    0 10px 24px rgba(0, 0, 0, 0.12);
+}
+[data-preset="clay"] .presentation-pill {
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+[data-preset="clay"] .presentation-pill:not(.active):hover {
+  transform: translateY(-1px);
+}
+
 [data-preset="clay"] .benefits-grid li {
   background: var(--color-surface);
   box-shadow:

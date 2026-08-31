@@ -7,6 +7,7 @@
 import { computed, ref } from "vue";
 import MediaVisual from "@/components/ui/MediaVisual.vue";
 import SvgIcon from "@/components/ui/SvgIcon.vue";
+import { vReveal } from "@/composables/useScrollReveal";
 
 const props = defineProps({
   title: { type: String, required: true },
@@ -54,7 +55,7 @@ function sendAction() {
 </script>
 
 <template>
-  <article class="catalog-card">
+  <article v-reveal class="catalog-card">
     <MediaVisual :visual="visual" :image-src="resolvedImageSrc" :label="title" :aspect="aspect" />
     <div class="card-body">
       <div v-if="category || badge || partnerName" class="card-meta">

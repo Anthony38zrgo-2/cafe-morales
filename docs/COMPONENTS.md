@@ -33,6 +33,7 @@ Añadir sección:
   - Iconify dinámico `name="mdi:whatsapp" | "lucide:coffee" | "heroicons:shopping-bag"` vía `@iconify/vue` (requiere `unplugin-icons` + `@iconify/json` ya configurados en `vite.config.js`)
   - Import directo optimizado (tree-shakable, sin fetch): `import IconWhatsapp from '~icons/mdi/whatsapp'` (plugin `unplugin-icons/vite`)
 - `SvgIllustration.vue` prop `name, alt` — ilustraciones para placeholders.
+- `useScrollReveal.js` — directiva local `vReveal` (`v-reveal` en SFCs con `<script setup>`): añade `.reveal-init`, luego `.revealed` al entrar en viewport y retira las clases tras 650 ms para no interferir con hovers. Respeta `prefers-reduced-motion` (no oculta contenido) y fallback sin `IntersectionObserver`.
 - `MediaVisual.vue` prop `visual:{type,name|src,aspect,alt}, imageSrc, label` — unifica WebP e SVG; `hasImage` usa `imageSrc || visual.src` como fallback.
 - `ProductVisual.vue` wrapper de `MediaVisual` para `productImages.js`.
 - `UiButton.vue` prop `label,href,variant,icon,external`

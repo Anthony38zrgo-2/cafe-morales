@@ -2,6 +2,8 @@
 /**
  * SectionHeader — encabezado reutilizable para todas las secciones
  */
+import { vReveal } from "@/composables/useScrollReveal";
+
 defineProps({
   eyebrow: { type: String, default: "" },
   title: { type: String, required: true },
@@ -12,7 +14,7 @@ defineProps({
 </script>
 
 <template>
-  <div :class="align === 'center' ? 'text-center mx-auto' : ''">
+  <div v-reveal :class="align === 'center' ? 'text-center mx-auto' : ''">
     <p v-if="eyebrow" class="eyebrow" :class="align === 'center' ? 'mx-auto' : ''">{{ eyebrow }}</p>
     <h2 :id="headingId" class="section-title" :class="align === 'center' ? 'mx-auto text-center' : ''">
       {{ title }}

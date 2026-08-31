@@ -153,8 +153,8 @@
       ),
       linear-gradient(
         180deg,
-        var(--color-surface) 0%,
-        color-mix(in srgb, var(--color-surface-alt) 64%, var(--color-surface)) 18%,
+        color-mix(in srgb, var(--color-surface-alt) 45%, var(--color-surface)) 0%,
+        color-mix(in srgb, var(--color-surface-alt) 70%, var(--color-surface)) 18%,
         var(--color-surface-alt) 100%
       );
     box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-brand) 18%, transparent);
@@ -227,6 +227,17 @@
   .catalog-card {
     @apply overflow-hidden border border-ink/10 bg-surface shadow-sm;
     border-radius: var(--radius-card);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .catalog-card:hover {
+    transform: translateY(-3px);
+  }
+  .catalog-card .media-visual img,
+  .catalog-card .visual-placeholder {
+    transition: transform 0.7s ease;
+  }
+  .catalog-card:hover .media-visual img {
+    transform: scale(1.04);
   }
   .catalog-card .media-visual,
   .catalog-card .visual-placeholder {
@@ -252,7 +263,7 @@
     @apply mb-8 flex flex-wrap gap-2;
   }
   .filter-button {
-    @apply rounded-full border border-ink/15 bg-surface px-4 py-2 text-sm font-semibold transition;
+    @apply rounded-full border border-ink/15 bg-surface px-4 py-2 text-sm font-semibold transition hover:border-brand hover:text-brand;
   }
   .filter-button.active {
     @apply bg-brand text-white border-brand;
@@ -333,10 +344,11 @@
   }
 
   .site-footer {
-    @apply bg-ink py-10 text-white;
+    @apply relative bg-ink py-10 text-white;
   }
   .footer-grid {
-    @apply grid gap-6 text-sm md:grid-cols-[1fr_auto] md:items-end;
+    @apply relative grid gap-6 text-sm md:grid-cols-[1fr_auto] md:items-end;
+    z-index: 1;
   }
   .footer-grid strong {
     @apply font-display text-2xl;
@@ -484,10 +496,13 @@
     @apply mt-4 flex flex-wrap gap-2;
   }
   .presentation-pill {
-    @apply rounded-full border border-ink/15 bg-surface px-4 py-2 text-sm font-bold transition;
+    @apply rounded-full border border-ink/15 bg-surface px-4 py-2 text-sm font-bold transition hover:border-brand hover:text-brand;
   }
   .presentation-pill.active {
     @apply border-brand bg-brand text-white;
+  }
+  .presentation-pill.active:hover {
+    @apply text-white;
   }
   .card-price-row {
     @apply mt-4 flex items-end justify-between gap-3;
@@ -635,7 +650,7 @@
 
   /* Ritual — franja continua entre catálogo y productores */
   .ritual-section {
-    @apply py-16 text-center md:py-20;
+    @apply relative py-16 text-center md:py-20;
     color: var(--color-surface);
     background-image:
       linear-gradient(
@@ -647,7 +662,8 @@
     background-size: cover;
   }
   .ritual-grid {
-    @apply grid justify-items-center gap-7;
+    @apply relative grid justify-items-center gap-7;
+    z-index: 1;
   }
   .ritual-copy {
     @apply mx-auto max-w-2xl text-center;
@@ -698,6 +714,19 @@
   }
 }
 
+/* Reveal on scroll — las clases se retiran tras la animación (ver useScrollReveal) */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s ease var(--reveal-delay, 0ms),
+    transform 0.55s ease var(--reveal-delay, 0ms);
+}
+.reveal-init.revealed {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -709,5 +738,11 @@
   }
   .hero-beans.motion {
     animation: none !important;
+  }
+  .reveal-init,
+  .reveal-init.revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }

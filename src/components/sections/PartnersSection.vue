@@ -34,6 +34,7 @@ const resolvedVisual = computed(() => {
     <div class="page-container">
       <SectionHeader :eyebrow="eyebrow" :title="title" :description="description" heading-id="partners-title" />
 
+
       <div class="origin-selection-grid">
         <MediaVisual
           v-if="resolvedVisual"

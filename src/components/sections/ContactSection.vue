@@ -3,6 +3,7 @@ import { computed } from "vue";
 import { siteConfig } from "@/config/site.config";
 import { createWhatsAppUrl, buildDefaultMessage } from "@/composables/useWhatsApp";
 import UiButton from "@/components/ui/UiButton.vue";
+import { vReveal } from "@/composables/useScrollReveal";
 
 defineProps({
   eyebrow: { type: String, default: "Contacto" },
@@ -19,7 +20,7 @@ const whatsappUrl = computed(() => createWhatsAppUrl(buildDefaultMessage(siteCon
 <template>
   <section id="contact" class="contact-section section-space" aria-labelledby="contact-title">
     <div class="page-container">
-      <div class="contact-inner" :class="variant === 'split' ? 'text-left' : 'text-center'">
+      <div v-reveal class="contact-inner" :class="variant === 'split' ? 'text-left' : 'text-center'">
         <p class="eyebrow">{{ eyebrow }}</p>
         <h2 id="contact-title" class="section-title" :class="variant !== 'split' ? 'mx-auto' : ''">{{ title }}</h2>
         <p v-if="description">{{ description }}</p>
