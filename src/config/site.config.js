@@ -47,7 +47,7 @@ const rawConfig = {
   navigation: [
     { label: "Catálogo", href: "#catalog", section: "catalog" },
     {
-      label: "Quiénes producen",
+      label: "Origen y selección",
       href: "#partners",
       section: "partners",
     },
@@ -93,11 +93,10 @@ const rawConfig = {
           },
         ],
         visual: {
-          type: "model",
-          src: "taza-cafe",
-          poster: "hero-coffee",
-          aspect: "4 / 3",
-          alt: "Taza de café 3D",
+          type: "image",
+          src: "dalia-moka-pot",
+          aspect: "1 / 1",
+          alt: "Dalia presenta una Moka Pot celeste",
         },
         highlights: [
           "Con cualquier compra: esencia premium de café de especialidad (300 ml)",
@@ -125,6 +124,27 @@ const rawConfig = {
         columns: { base: 1, md: 2, lg: 3 },
         cardVariant: "elevated",
         showFilters: true,
+        background: "hero-echo",
+      },
+    },
+    {
+      id: "ritual",
+      enabled: true,
+      order: 25,
+      variant: "centered",
+      props: {
+        eyebrow: "El ritual del café",
+        title: "Del origen a tu taza",
+        description:
+          "Elegimos cafés peruanos con historia para que cada preparación termine en una taza que disfrutas de verdad.",
+        background: "beans-light",
+        visual: {
+          type: "model",
+          src: "taza-cafe",
+          poster: "hero-coffee",
+          aspect: "1 / 1",
+          alt: "Taza de café en 3D",
+        },
       },
     },
     {
@@ -133,10 +153,33 @@ const rawConfig = {
       order: 30,
       variant: "grid",
       props: {
-        eyebrow: "Quiénes producen",
-        title: "Conoce el origen de tu café",
+        eyebrow: "Origen y selección",
+        title: "Conocemos quién produce. Elegimos lo que vale la pena.",
         description:
-          "Conoce a los productores y tostadores detrás de cada producto: su trayectoria, regiones de origen y experiencia. Hoy trabajamos con Valqui, de Café Ventura S.A.C.",
+          "Trabajamos con productores y tostadores peruanos con trayectoria. Conocemos su historia, revisamos el origen y comparamos calidad, perfil y precio para ofrecerte cafés confiables y fáciles de elegir.",
+        visual: {
+          type: "image",
+          src: "valqui-vendedora",
+          aspect: "4 / 5",
+          alt: "Productora de Café Ventura presenta una bolsa de café Valqui",
+        },
+        criteriaTitle: "Nuestra forma de elegir",
+        criteriaDescription:
+          "Buscamos cafés peruanos con buena relación calidad-precio, información clara y una trayectoria que podamos comprobar.",
+        criteria: [
+          {
+            title: "Trayectoria comprobada",
+            description: "Productores y tostadores con experiencia y trabajo verificable.",
+          },
+          {
+            title: "Origen claro",
+            description: "Regiones, presentación y perfil visibles para elegir con confianza.",
+          },
+          {
+            title: "Precio justo",
+            description: "Alternativas confiables para distintos gustos y presupuestos.",
+          },
+        ],
       },
     },
     {
@@ -177,7 +220,7 @@ const rawConfig = {
     },
     {
       id: "about",
-      enabled: true,
+      enabled: false,
       order: 50,
       variant: "split-reverse",
       props: {

@@ -26,6 +26,10 @@ const visibleActions = computed(() =>
   (props.actions || []).filter((a) => isConfiguredLinkAvailable(a.href, siteConfig)),
 );
 const isModel = computed(() => props.visual?.type === "model");
+const heroImageSrc = computed(() =>
+  props.visual?.type === "image" ? getCoffeeImage(props.visual?.src) : "",
+);
+const isDaliaVisual = computed(() => props.visual?.src === "dalia-moka-pot");
 const decorationSrc = computed(() => {
   const key = props.decoration?.src;
   return key ? getCoffeeImage(key) : "";
@@ -84,8 +88,10 @@ const decorationMotion = computed(() => props.decoration?.motion !== false);
         <MediaVisual
           v-else
           :visual="visual"
+          :image-src="heroImageSrc"
           :label="title"
           class="hero-visual w-full"
+          :class="{ 'hero-dalia': isDaliaVisual }"
         />
 
         <img

@@ -25,6 +25,7 @@ const props = defineProps({
   columns: { type: Object, default: () => ({ base: 1, md: 2, lg: 3 }) },
   cardVariant: { type: String, default: "elevated" },
   showFilters: { type: Boolean, default: true },
+  background: { type: String, default: "default" },
   variant: { type: String, default: "grid" },
 });
 
@@ -84,7 +85,12 @@ function partnerLogo(id) {
 </script>
 
 <template>
-  <section id="catalog" class="section-space" aria-labelledby="catalog-title">
+  <section
+    id="catalog"
+    class="catalog-section section-space"
+    :class="`catalog-background-${background}`"
+    aria-labelledby="catalog-title"
+  >
     <div class="page-container">
       <SectionHeader :eyebrow="eyebrow" :title="title" :description="description" heading-id="catalog-title" />
 

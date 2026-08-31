@@ -7,12 +7,12 @@
     "name": "Valqui Clásico",
     "description": "Café peruano natural tostado molido, de sabor suave. Tostado y sellado por Café Ventura S.A.C.; ideal para el día a día con buena relación calidad-precio.",
     "flags": ["Tostado molido", "100% café natural", "Café peruano", "Sabor suave"],
-    "priceFrom": 6.5,
+    "priceFrom": 8,
     "badge": "El favorito del mercado",
     "presentations": [
-      { "unit": "250 g", "price": 6.5, "image": "valqui-clasico-250" },
-      { "unit": "500 g", "price": 13.0, "image": "valqui-clasico-500" },
-      { "unit": "1 kg", "price": 26.0, "image": "valqui-clasico-1kg" }
+      { "unit": "250 g", "price": 8, "image": "valqui-clasico-250" },
+      { "unit": "500 g", "price": 15.0, "image": "valqui-clasico-500" },
+      { "unit": "1 kg", "price": 28.0, "image": "valqui-clasico-1kg" }
     ],
     "visual": { "type": "image", "aspect": "4 / 3", "alt": "Bolsa Valqui Clásico" }
   }

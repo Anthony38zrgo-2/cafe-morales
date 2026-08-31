@@ -69,10 +69,10 @@
         color-mix(in srgb, var(--color-brand-dark) 76%, transparent),
         color-mix(in srgb, var(--color-ink) 82%, transparent)
       ),
-      url("../assets/coffee/coffee-beans-dark-seamless.webp");
+      url("../assets/coffee/header-coffee-beans.webp");
     background-position: center;
-    background-repeat: repeat;
-    background-size: auto, 560px 560px;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .header-inner {
     @apply flex min-h-18 items-center justify-between gap-6 py-3;
@@ -135,6 +135,29 @@
 
   .catalog-grid {
     @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
+  }
+  .catalog-section {
+    @apply relative isolate overflow-hidden;
+  }
+  .catalog-background-hero-echo {
+    background:
+      radial-gradient(
+        circle at 12% 8%,
+        color-mix(in srgb, var(--color-accent) 16%, transparent) 0,
+        transparent 30rem
+      ),
+      radial-gradient(
+        circle at 92% 88%,
+        color-mix(in srgb, var(--color-brand) 10%, transparent) 0,
+        transparent 34rem
+      ),
+      linear-gradient(
+        180deg,
+        var(--color-surface) 0%,
+        color-mix(in srgb, var(--color-surface-alt) 64%, var(--color-surface)) 18%,
+        var(--color-surface-alt) 100%
+      );
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-brand) 18%, transparent);
   }
   .catalog-grid.list {
     @apply grid-cols-1;
@@ -496,13 +519,25 @@
     @apply h-full rounded-full bg-accent transition-all;
   }
 
-  /* Partners */
-  .partners-grid {
-    @apply grid gap-6 md:grid-cols-2;
+  /* Origen y selección */
+  .origin-selection-grid {
+    @apply mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16;
   }
-  .partner-card {
-    @apply border border-ink/10 bg-surface p-6 rounded-2xl;
-    border-radius: var(--radius-card);
+  .origin-selection-visual {
+    @apply w-full;
+    border-radius: var(--radius-visual);
+  }
+  .origin-selection-content {
+    @apply grid gap-10;
+  }
+  .partner-profile {
+    @apply border-b border-ink/10 pb-10;
+  }
+  .partner-profile-head {
+    @apply flex items-center gap-4;
+  }
+  .partner-logo {
+    @apply size-20 shrink-0 object-contain;
   }
   .partner-card-head h3 {
     @apply font-display text-2xl font-bold;
@@ -524,6 +559,27 @@
   }
   .partner-link {
     @apply mt-5 inline-flex w-fit px-4 py-2 text-xs;
+  }
+  .selection-criteria > h3 {
+    @apply font-display text-3xl font-bold;
+  }
+  .selection-criteria-description {
+    @apply mt-3 max-w-2xl leading-7 text-muted;
+  }
+  .selection-criteria-list {
+    @apply mt-7 grid gap-5;
+  }
+  .selection-criteria-list li {
+    @apply grid grid-cols-[2.5rem_1fr] gap-4 border-t border-ink/10 pt-5;
+  }
+  .selection-criteria-list li > span {
+    @apply font-display text-xl font-bold text-brand;
+  }
+  .selection-criteria-list h4 {
+    @apply font-bold;
+  }
+  .selection-criteria-list p {
+    @apply mt-1 text-sm leading-6 text-muted;
   }
 
   /* Loyalty */
@@ -555,19 +611,59 @@
     @apply relative z-10;
     background: transparent !important;
   }
+  .hero-visual-wrap .hero-dalia {
+    overflow: visible;
+  }
+  .hero-visual-wrap .hero-dalia img {
+    object-fit: contain;
+    transform: scaleX(-1);
+  }
   .hero-beans {
     @apply pointer-events-none absolute select-none;
     object-fit: contain;
     object-position: center;
-    right: -4%;
+    right: -9%;
     top: 50%;
     transform: translateY(-50%);
-    width: 56%;
+    width: 34%;
     max-width: 520px;
     height: auto;
     aspect-ratio: 1;
     opacity: 0.96;
-    z-index: 3;
+    z-index: 20;
+  }
+
+  /* Ritual — franja continua entre catálogo y productores */
+  .ritual-section {
+    @apply py-16 text-center md:py-20;
+    color: var(--color-surface);
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--color-ink) 78%, transparent),
+        color-mix(in srgb, var(--color-brand-dark) 74%, transparent)
+      ),
+      var(--ritual-background);
+    background-position: center;
+    background-size: cover;
+  }
+  .ritual-grid {
+    @apply grid justify-items-center gap-7;
+  }
+  .ritual-copy {
+    @apply mx-auto max-w-2xl text-center;
+  }
+  .ritual-section .eyebrow {
+    @apply mx-auto;
+    color: var(--color-accent);
+  }
+  .ritual-section .section-title,
+  .ritual-section .lead {
+    @apply mx-auto text-center;
+    color: var(--color-surface);
+  }
+  .ritual-model {
+    @apply mx-auto w-full max-w-72;
+    background: transparent;
   }
   .hero-beans.behind {
     z-index: 1;
@@ -582,7 +678,7 @@
   }
   @media (max-width: 639px) {
     .hero-beans {
-      width: 68%;
+      width: 38%;
       right: -8%;
       top: 56%;
       opacity: 0.9;

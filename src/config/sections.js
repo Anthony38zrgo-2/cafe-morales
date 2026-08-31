@@ -7,6 +7,7 @@ export const SECTION_IDS = Object.freeze([
   "header",
   "hero",
   "catalog",
+  "ritual",
   "partners",
   "loyalty",
   "about",
@@ -19,6 +20,7 @@ export const SECTION_IDS = Object.freeze([
 export const SECTION_VARIANTS = Object.freeze({
   hero: ["split", "centered", "highlight"],
   catalog: ["grid", "list", "carousel", "masonry"],
+  ritual: ["centered"],
   partners: ["grid"],
   loyalty: ["grid", "numbered"],
   about: ["split", "split-reverse", "centered"],
@@ -54,10 +56,22 @@ export const SECTION_PROPS_SCHEMA = Object.freeze({
     emptyMessage: { type: "text", label: "Mensaje vacío" },
     cardVariant: { type: "select", label: "Card variant", options: ["elevated", "outline"] },
     showFilters: { type: "check", label: "Mostrar filtros" },
+    background: {
+      type: "select",
+      label: "Fondo",
+      options: ["default", "hero-echo"],
+    },
     columns: {
       type: "text",
       label: "Columnas (JSON grid)", placeholder: '{"base":1,"md":2,"lg":3}',
     },
+  },
+  ritual: {
+    eyebrow: { type: "text", label: "Eyebrow" },
+    title: { type: "text", label: "Título", required: true },
+    description: { type: "textarea", label: "Descripción" },
+    background: { type: "text", label: "Fondo decorativo" },
+    visual: { type: "visual", label: "Modelo 3D" },
   },
   about: {
     eyebrow: { type: "text", label: "Eyebrow" },
@@ -83,6 +97,17 @@ export const SECTION_PROPS_SCHEMA = Object.freeze({
     eyebrow: { type: "text", label: "Eyebrow" },
     title: { type: "text", label: "Título", required: true },
     description: { type: "textarea", label: "Descripción" },
+    visual: { type: "visual", label: "Visual" },
+    criteriaTitle: { type: "text", label: "Título de selección" },
+    criteriaDescription: { type: "textarea", label: "Descripción de selección" },
+    criteria: {
+      type: "list",
+      label: "Criterios de selección",
+      item: {
+        title: { type: "text", label: "Título" },
+        description: { type: "textarea", label: "Descripción" },
+      },
+    },
   },
   loyalty: {
     eyebrow: { type: "text", label: "Eyebrow" },

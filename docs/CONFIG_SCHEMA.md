@@ -24,10 +24,11 @@ disponibles (`{id,label}`). Validado por `validate.js` (`gift.threshold` debe se
 
 ## Sections
 
-`id`: `header|hero|catalog|partners|loyalty|about|benefits|contact|footer|floating-contact`
+`id`: `header|hero|catalog|ritual|partners|loyalty|about|benefits|contact|footer|floating-contact`
 `variant` por id:
 - hero: `split|centered|highlight`
 - catalog: `grid|list|carousel|masonry`
+- ritual: `centered`
 - partners: `grid`
 - loyalty: `grid|numbered`
 - about: `split|split-reverse|centered`

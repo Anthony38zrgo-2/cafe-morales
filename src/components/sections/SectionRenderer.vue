@@ -5,6 +5,7 @@
  */
 import HeroSection from "@/components/sections/HeroSection.vue";
 import CatalogSection from "@/components/sections/CatalogSection.vue";
+import RitualSection from "@/components/sections/RitualSection.vue";
 import PartnersSection from "@/components/sections/PartnersSection.vue";
 import LoyaltySection from "@/components/sections/LoyaltySection.vue";
 import AboutSection from "@/components/sections/AboutSection.vue";
@@ -18,6 +19,7 @@ const props = defineProps({
 const registry = {
   hero: HeroSection,
   catalog: CatalogSection,
+  ritual: RitualSection,
   partners: PartnersSection,
   loyalty: LoyaltySection,
   about: AboutSection,
