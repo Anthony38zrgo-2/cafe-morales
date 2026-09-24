@@ -15,7 +15,7 @@ defineProps({
 });
 
 const homeHref = computed(() => getFirstContentHref(siteConfig));
-const brandLogoSrc = computed(() => getCoffeeImage("bean-single"));
+const brandLogoSrc = computed(() => getCoffeeImage("brand-mascot"));
 </script>
 
 <template>

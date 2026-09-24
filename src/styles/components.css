@@ -225,7 +225,7 @@
     @apply mb-6 inline-block w-full;
   }
   .catalog-card {
-    @apply overflow-hidden border border-ink/10 bg-surface shadow-sm;
+    @apply flex flex-col overflow-hidden border border-ink/10 bg-surface shadow-sm;
     border-radius: var(--radius-card);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
@@ -239,12 +239,44 @@
   .catalog-card:hover .media-visual img {
     transform: scale(1.04);
   }
+  .card-media-carousel {
+    position: relative;
+  }
+  .card-media-carousel.has-presentation-carousel .media-visual {
+    border-radius: 0;
+  }
+  .card-media-carousel-arrow {
+    @apply absolute top-1/2 grid size-9 -translate-y-1/2 place-items-center rounded-full border border-ink/10 text-xl font-bold shadow-md transition hover:bg-brand hover:text-white sm:size-10;
+    background-color: color-mix(in srgb, var(--color-surface) 90%, transparent);
+    color: var(--color-ink);
+    backdrop-filter: blur(6px);
+  }
+  .card-media-carousel-arrow.prev {
+    @apply left-3;
+  }
+  .card-media-carousel-arrow.next {
+    @apply right-3;
+  }
+  .card-media-carousel-dots {
+    @apply absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full px-3 py-2 shadow-sm;
+    background-color: color-mix(in srgb, var(--color-surface) 88%, transparent);
+    backdrop-filter: blur(6px);
+  }
+  .card-media-carousel-dot {
+    @apply size-2 rounded-full border-2 border-surface transition;
+    background-color: color-mix(in srgb, var(--color-ink) 35%, transparent);
+  }
+  .card-media-carousel-dot.active {
+    @apply w-5 rounded-full;
+    background-color: var(--color-brand);
+  }
   .catalog-card .media-visual,
   .catalog-card .visual-placeholder {
     @apply rounded-none border-0 border-b border-dashed border-brand/25;
   }
   .card-body {
     @apply p-6 flex flex-1 flex-col;
+    min-height: 0;
   }
   .card-meta {
     @apply mb-4 flex justify-between gap-3 text-[.7rem] font-bold uppercase tracking-wider text-brand;
@@ -253,7 +285,7 @@
     @apply font-display text-2xl font-bold;
   }
   .card-body p {
-    @apply my-4 text-sm leading-6 text-muted flex-1;
+    @apply my-4 flex-1 text-sm leading-6 text-muted;
   }
   .empty-state {
     @apply rounded-2xl border border-dashed border-ink/25 p-8 text-center text-muted;
@@ -296,6 +328,8 @@
   }
   .card-actions {
     @apply mt-4 flex gap-2;
+    margin-top: auto;
+    padding-top: 1rem;
   }
 
   .benefits-grid {
@@ -332,14 +366,53 @@
   .contact-inner {
     @apply text-center;
   }
+  .contact-inner-with-visual {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(1rem, 4vw, 2rem);
+    max-width: 58rem;
+    margin-inline: auto;
+  }
+  .contact-inner-with-visual .contact-visual {
+    grid-column: 1;
+    justify-self: center;
+    width: min(100%, 8rem);
+    max-height: 11rem;
+    object-fit: contain;
+  }
+  .contact-inner-with-visual .contact-copy {
+    grid-column: 2;
+    min-width: 0;
+  }
+  .contact-inner-with-decoration {
+    grid-template-areas: "visual copy decoration";
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 2.1fr) minmax(0, 0.85fr);
+    max-width: 74rem;
+  }
+  .contact-inner-with-decoration .contact-visual {
+    grid-area: visual;
+    width: min(100%, 14rem);
+    max-height: 20rem;
+  }
+  .contact-inner-with-decoration .contact-copy {
+    grid-area: copy;
+  }
+  .contact-inner-with-decoration .contact-floating-beans {
+    grid-area: decoration;
+    justify-self: center;
+    width: min(100%, 12rem);
+    max-height: 20rem;
+    object-fit: contain;
+  }
   .contact-inner h2,
-  .contact-inner > p {
+  .contact-inner .contact-copy > p:not(.eyebrow) {
     @apply mx-auto;
   }
-  .contact-inner > p {
+  .contact-inner .contact-copy > p:not(.eyebrow) {
     @apply mt-5 max-w-2xl text-white/75;
   }
-  .contact-inner small {
+  .contact-inner .contact-copy small {
     @apply mt-5 block text-white/60;
   }
 
@@ -633,6 +706,12 @@
     object-fit: contain;
     transform: scaleX(-1);
   }
+  .hero-visual-wrap .hero-dalia-phin {
+    overflow: visible;
+  }
+  .hero-visual-wrap .hero-dalia-phin img {
+    object-fit: contain;
+  }
   .hero-beans {
     @apply pointer-events-none absolute select-none;
     object-fit: contain;
@@ -705,6 +784,40 @@
 @media (max-width: 639px) {
   .display-title {
     font-size: clamp(2.25rem, 10vw, 3rem);
+  }
+  .contact-inner-with-visual {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+  .contact-inner-with-visual .contact-visual {
+    grid-column: 1;
+    width: 5.5rem;
+    max-height: 7.5rem;
+  }
+  .contact-inner-with-visual .contact-copy {
+    grid-column: 1;
+  }
+  .contact-inner-with-decoration {
+    grid-template-areas:
+      "copy copy"
+      "visual decoration";
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .contact-inner-with-decoration .contact-visual {
+    grid-area: visual;
+    width: min(100%, 6rem);
+    max-height: 8rem;
+  }
+  .contact-inner-with-decoration .contact-copy {
+    grid-area: copy;
+    grid-column: 1 / -1;
+  }
+  .contact-inner-with-decoration .contact-floating-beans {
+    grid-area: decoration;
+    justify-self: center;
+    width: min(100%, 5rem);
+    max-height: 9rem;
+    object-fit: contain;
   }
   .brand span:last-child {
     max-width: 12rem;

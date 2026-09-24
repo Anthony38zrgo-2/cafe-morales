@@ -140,7 +140,7 @@ onBeforeUnmount(() => {
         </header>
 
         <form @submit.prevent="submitOrder">
-          <div class="presentation-select" role="group" aria-label="Presentación">
+          <div class="presentation-select" role="group" aria-label="Opciones del producto">
             <button
               v-for="(p, i) in presentations"
               :key="p.unit"

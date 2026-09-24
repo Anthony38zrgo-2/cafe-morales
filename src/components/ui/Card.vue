@@ -23,6 +23,7 @@ const props = defineProps({
   presentations: { type: Array, default: () => [] },
   partnerName: { type: String, default: "" },
   partnerLogo: { type: String, default: "" },
+  saleUnitLabel: { type: String, default: "bolsa" },
   flags: { type: Array, default: () => [] },
   product: { type: Object, default: null },
 });
@@ -30,7 +31,18 @@ defineEmits(["action"]);
 
 const active = ref(0);
 const current = computed(() => props.presentations[active.value] || null);
+const showPresentationCarousel = computed(
+  () => props.visual?.presentationCarousel === true && props.presentations.length > 1,
+);
 const resolvedImageSrc = computed(() => current.value?.imageSrc || props.imageSrc);
+const resolvedVisual = computed(() => {
+  if (!props.visual) return props.visual;
+  return {
+    ...props.visual,
+    aspect: props.aspect || props.visual.aspect,
+    alt: current.value?.alt || props.visual.alt || props.title,
+  };
+});
 const fromPrice = computed(() => {
   if (!props.presentations.length) return "";
   const min = Math.min(...props.presentations.map((p) => Number(p.price) || 0));
@@ -45,6 +57,12 @@ function selectPresentation(i) {
   active.value = i;
 }
 
+function stepPresentation(direction) {
+  const count = props.presentations.length;
+  if (count < 2) return;
+  active.value = (active.value + direction + count) % count;
+}
+
 function sendAction() {
   return {
     product: props.product,
@@ -56,7 +74,48 @@ function sendAction() {
 
 <template>
   <article v-reveal class="catalog-card">
-    <MediaVisual :visual="visual" :image-src="resolvedImageSrc" :label="title" :aspect="aspect" />
+    <div
+      class="card-media-carousel"
+      :class="{ 'has-presentation-carousel': showPresentationCarousel }"
+      :role="showPresentationCarousel ? 'region' : undefined"
+      :aria-roledescription="showPresentationCarousel ? 'carrusel' : undefined"
+      :aria-label="showPresentationCarousel ? `Galería de ${title}` : undefined"
+    >
+      <MediaVisual :visual="resolvedVisual" :image-src="resolvedImageSrc" :label="title" :aspect="aspect" />
+      <template v-if="showPresentationCarousel">
+        <button
+          type="button"
+          class="card-media-carousel-arrow prev"
+          :aria-label="`Imagen anterior de ${title}`"
+          @click="stepPresentation(-1)"
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          class="card-media-carousel-arrow next"
+          :aria-label="`Imagen siguiente de ${title}`"
+          @click="stepPresentation(1)"
+        >
+          ›
+        </button>
+        <div class="card-media-carousel-dots" role="group" :aria-label="`Acabados de ${title}`">
+          <button
+            v-for="(presentation, index) in presentations"
+            :key="presentation.unit"
+            type="button"
+            class="card-media-carousel-dot"
+            :class="{ active: active === index }"
+            :aria-label="`Mostrar acabado ${presentation.unit}`"
+            :aria-pressed="active === index"
+            @click="selectPresentation(index)"
+          />
+        </div>
+        <span class="sr-only" aria-live="polite">
+          Imagen {{ active + 1 }} de {{ presentations.length }}: {{ current?.unit }}
+        </span>
+      </template>
+    </div>
     <div class="card-body">
       <div v-if="category || badge || partnerName" class="card-meta">
         <span class="card-meta-main">
@@ -78,7 +137,7 @@ function sendAction() {
         <span v-for="flag in flags" :key="flag" class="flag-chip">{{ flag }}</span>
       </div>
 
-      <div v-if="presentations.length" class="presentation-select" role="group" :aria-label="`Presentaciones de ${title}`">
+      <div v-if="presentations.length" class="presentation-select" role="group" :aria-label="`Opciones de ${title}`">
         <button
           v-for="(p, i) in presentations"
           :key="p.unit"
@@ -96,7 +155,8 @@ function sendAction() {
         <strong v-if="fromPrice" class="price-from">{{ fromPrice }}</strong>
         <strong v-else-if="price">{{ price }}</strong>
         <span v-if="current" class="price-current">
-          S/ {{ formatPrice(current.price) }}<small class="block text-xs font-semibold text-muted">por bolsa</small>
+          S/ {{ formatPrice(current.price) }}
+          <small class="block text-xs font-semibold text-muted">por {{ saleUnitLabel }}</small>
         </span>
       </div>
 

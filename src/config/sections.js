@@ -54,6 +54,7 @@ export const SECTION_PROPS_SCHEMA = Object.freeze({
     title: { type: "text", label: "Título", required: true },
     description: { type: "textarea", label: "Descripción" },
     emptyMessage: { type: "text", label: "Mensaje vacío" },
+    imageAspect: { type: "select", label: "Proporción de imagen", options: ["1 / 1", "4 / 3", "3 / 2"] },
     cardVariant: { type: "select", label: "Card variant", options: ["elevated", "outline"] },
     showFilters: { type: "check", label: "Mostrar filtros" },
     background: {

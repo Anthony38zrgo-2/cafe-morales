@@ -15,5 +15,24 @@
       { "unit": "1 kg", "price": 28.0, "image": "valqui-clasico-1kg" }
     ],
     "visual": { "type": "image", "aspect": "4 / 3", "alt": "Bolsa Valqui Clásico" }
+  },
+  {
+    "id": "phin-filter",
+    "partnerId": "",
+    "gama": "clasico",
+    "category": "Accesorios",
+    "name": "Phin Filter",
+    "description": "Filtro vietnamita para preparar café por goteo. Disponible por unidad en cinco acabados.",
+    "flags": ["Venta por unidad", "5 acabados"],
+    "priceFrom": 25,
+    "saleUnitLabel": "unidad",
+    "presentations": [
+      { "unit": "Iridiscente", "price": 25, "image": "phin-filter-iridiscente", "alt": "Phin Filter de acabado iridiscente" },
+      { "unit": "Negro", "price": 25, "image": "phin-filter-negro", "alt": "Phin Filter de acabado negro" },
+      { "unit": "Dorado", "price": 25, "image": "phin-filter-dorado", "alt": "Phin Filter de acabado dorado" },
+      { "unit": "Oro rosado", "price": 25, "image": "phin-filter-rose-gold", "alt": "Phin Filter de acabado oro rosado" },
+      { "unit": "Plateado", "price": 25, "image": "phin-filter-plateado", "alt": "Phin Filter de acabado plateado" }
+    ],
+    "visual": { "type": "image", "aspect": "1 / 1", "alt": "Phin Filter de acabado iridiscente", "presentationCarousel": true }
   }
 ]

@@ -30,6 +30,7 @@ const heroImageSrc = computed(() =>
   props.visual?.type === "image" ? getCoffeeImage(props.visual?.src) : "",
 );
 const isDaliaVisual = computed(() => props.visual?.src === "dalia-moka-pot");
+const isDaliaPhinVisual = computed(() => props.visual?.src === "dalia-phin-hero");
 const decorationSrc = computed(() => {
   const key = props.decoration?.src;
   return key ? getCoffeeImage(key) : "";
@@ -46,7 +47,10 @@ const decorationMotion = computed(() => props.decoration?.motion !== false);
     :class="variant"
     aria-labelledby="hero-title"
   >
-    <div class="page-container" :class="variant === 'centered' ? '' : 'split-grid'">
+    <div
+      class="page-container"
+      :class="variant === 'centered' ? '' : 'split-grid'"
+    >
       <div :class="variant === 'centered' ? 'max-w-3xl text-center' : ''">
         <p v-if="eyebrow" class="eyebrow" :class="variant === 'centered' ? 'mx-auto' : ''">{{ eyebrow }}</p>
         <h1 id="hero-title" class="display-title" :class="variant === 'centered' ? 'mx-auto text-center' : ''">
@@ -91,7 +95,7 @@ const decorationMotion = computed(() => props.decoration?.motion !== false);
           :image-src="heroImageSrc"
           :label="title"
           class="hero-visual w-full"
-          :class="{ 'hero-dalia': isDaliaVisual }"
+          :class="{ 'hero-dalia': isDaliaVisual, 'hero-dalia-phin': isDaliaPhinVisual }"
         />
 
         <img

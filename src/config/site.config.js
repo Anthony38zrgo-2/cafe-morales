@@ -94,20 +94,15 @@ const rawConfig = {
         ],
         visual: {
           type: "image",
-          src: "dalia-moka-pot",
+          src: "dalia-phin-hero",
           aspect: "1 / 1",
-          alt: "Dalia presenta una Moka Pot celeste",
+          alt: "Ilustración de una chica pelirroja preparando café con una Phin Filter",
         },
         highlights: [
           "Con cualquier compra: esencia premium de café de especialidad (300 ml)",
           "Regiones: Jaén · Chanchamayo · Cusco",
           "Envíos a todo el Perú",
         ],
-        decoration: {
-          src: "beans-floating",
-          placement: "floating",
-          motion: true,
-        },
       },
     },
     {
@@ -119,9 +114,10 @@ const rawConfig = {
         eyebrow: "El catálogo del momento",
         title: "Un mercado para cada bolsillo",
         description:
-          "Cafés cuidadosamente seleccionados de tostadores peruanos con trayectoria. Elige tu gama y presentación, con información clara de origen.",
-        emptyMessage: "Pronto nuevos cafés.",
+          "Cafés peruanos seleccionados y accesorios para prepararlos. Explora presentaciones y acabados, con información clara para elegir.",
+        emptyMessage: "Pronto nuevos productos.",
         columns: { base: 1, md: 2, lg: 3 },
+        imageAspect: "1 / 1",
         cardVariant: "elevated",
         showFilters: true,
         background: "hero-echo",
@@ -280,6 +276,14 @@ const rawConfig = {
           "Escríbenos y coordinamos pago y envío. Con cualquier compra recibes una botellita de 300 ml de esencia premium de café de especialidad.",
         note: "Almacén en Lima · Envíos a todo el Perú",
         actionLabel: "Escribir por WhatsApp",
+        visual: {
+          type: "image",
+          src: "coffee-bean-hero-cutout",
+          alt: "Grano de café tostado",
+        },
+        decoration: {
+          src: "beans-floating",
+        },
       },
     },
     {

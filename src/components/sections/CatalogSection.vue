@@ -23,6 +23,7 @@ const props = defineProps({
   description: { type: String, default: "" },
   emptyMessage: { type: String, default: "Sin productos." },
   columns: { type: Object, default: () => ({ base: 1, md: 2, lg: 3 }) },
+  imageAspect: { type: String, default: "1 / 1" },
   cardVariant: { type: String, default: "elevated" },
   showFilters: { type: Boolean, default: true },
   background: { type: String, default: "default" },
@@ -140,12 +141,13 @@ function partnerLogo(id) {
           :price="item.price"
           :visual="item.visual"
           :image-src="getImageSrc(item.id)"
-          :aspect="item.visual?.aspect || '4 / 3'"
+          :aspect="imageAspect"
           :action-label="orderEnabled ? 'Pedir por WhatsApp' : ''"
           action-icon="whatsapp"
           :presentations="mapPresentations(item)"
           :partner-name="partnerName(item.partnerId)"
           :partner-logo="partnerLogo(item.partnerId)"
+          :sale-unit-label="item.saleUnitLabel || 'bolsa'"
           :flags="item.flags"
           :product="item"
           @action="openOrder"
@@ -165,12 +167,13 @@ function partnerLogo(id) {
             :price="item.price"
             :visual="item.visual"
             :image-src="getImageSrc(item.id)"
-            :aspect="item.visual?.aspect || '4 / 3'"
+            :aspect="imageAspect"
             :action-label="orderEnabled ? 'Pedir por WhatsApp' : ''"
             action-icon="whatsapp"
             :presentations="mapPresentations(item)"
             :partner-name="partnerName(item.partnerId)"
             :partner-logo="partnerLogo(item.partnerId)"
+            :sale-unit-label="item.saleUnitLabel || 'bolsa'"
             :flags="item.flags"
             :product="item"
             @action="openOrder"
@@ -192,12 +195,13 @@ function partnerLogo(id) {
           :price="item.price"
           :visual="item.visual"
           :image-src="getImageSrc(item.id)"
-          :aspect="item.visual?.aspect || '4 / 3'"
+          :aspect="imageAspect"
           :action-label="orderEnabled ? 'Pedir por WhatsApp' : ''"
           action-icon="whatsapp"
           :presentations="mapPresentations(item)"
           :partner-name="partnerName(item.partnerId)"
           :partner-logo="partnerLogo(item.partnerId)"
+          :sale-unit-label="item.saleUnitLabel || 'bolsa'"
           :flags="item.flags"
           :product="item"
           @action="openOrder"
